@@ -1,0 +1,7 @@
+css/
+gatsby-node.js
+html.js
+node_modules/
+package.json
+public/
+vendor/

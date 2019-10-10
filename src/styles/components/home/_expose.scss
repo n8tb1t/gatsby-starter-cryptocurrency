@@ -1,0 +1,45 @@
+.home__expose {
+  z-index: z("default");
+  background-color: $white;
+
+  .point__arrow {
+    color:$lightgreen;
+  }
+
+  .expose__title {
+    margin-bottom: 40px;
+
+    strong {
+      color: $orange;
+    }
+  }
+
+  p strong {
+    color: $orange;
+  }
+
+  .expose__content {
+    padding: 20px 0;
+    width: 60%;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+
+  @include mq($max-width: $vw-medium) {
+    .expose__content {
+      padding: 30px;
+      width: 100%;
+    }
+
+    .expose__title {
+      text-align: center;
+    }
+  }
+
+  @include mq($max-width: $vw-medium) {
+    .expose__content {
+      padding: 0;
+    }
+  }
+}

@@ -1,0 +1,11 @@
+#!/bin/sh
+set -ex
+
+# Remove previous documentation and checkout documentation
+
+bin/checkout-documentation
+
+# Generate "nav.yml"
+
+bin/check-outline
+bin/generate-nav

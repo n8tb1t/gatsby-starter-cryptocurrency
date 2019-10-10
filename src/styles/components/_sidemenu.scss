@@ -1,0 +1,150 @@
+.side-menu {
+  position: fixed;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: $menuW;
+  z-index: z("sidemenu");
+  background-color: $white;
+  transition: transform ease .5s;
+  @include mq($min-width: $vw-large + 1) {
+    display: none;
+  }
+
+  .icon-discord {
+    font-size: 2.3em !important;
+  }
+
+  &:not(.open) {
+    transform: translateX(100%);
+  }
+
+  .side-menu__top {
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: $dark_color;
+    text-align: center;
+
+    .side-menu__logo {
+      padding: 10px 0;
+    }
+
+    .logo__circle,
+    .logo__text {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .logo__circle {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      position: relative;
+    }
+
+    .logo__cx {
+      height: auto;
+      width: 60px;
+      position: absolute;
+      left: 50%;
+      top: 55%;
+      transform: translate(-50%, -50%);
+    }
+
+    .logo__text {
+      height: 20px;
+      margin-left: 0px;
+      font-size: 2em;
+      color:$lightgreen;
+      font-weight:bold;
+
+    }
+
+    .side-menu__search {
+      padding: 10px 20px;
+      border-top: 1px solid $orange;
+      display: none;
+      align-self: flex-end;
+
+      .search__icon {
+        color: $white;
+      }
+
+      .search__input {
+        background-color: $lightgreen;
+        color: $black;
+      }
+    }
+  }
+
+  .side-menu__nav {
+    padding: 10px 0;
+    height: calc(100vh - 150px);
+    overflow: auto;
+    border-left: 5px solid $dark_color;
+  }
+
+  .menu-item {
+    padding: 15px 20px;
+    font-size: 1.8rem;
+
+    &.current {
+      background-color: rgba($orange, 0.3);
+
+      & > .menu-item__link {
+        color: $orange;
+      }
+    }
+
+    &:not(:last-child) {
+      border-bottom: 1px solid $orange;
+    }
+
+    &.withSubmenu {
+      & > .menu-item__link {
+        span {
+          opacity: .6;
+          font-size: 1.4rem;
+          text-transform: uppercase;
+
+          &:before {
+            content: "// ";
+          }
+        }
+
+        i {
+          display: none;
+        }
+      }
+
+      .menu-item__submenu {
+        padding-left: 15px;
+        font-size: 1.6rem;
+
+        & > .submenu__item {
+          padding: 3px 0;
+          display: block;
+        }
+      }
+    }
+
+    &.menu-item__social i {
+      padding: 0 10px;
+      color: $orange;
+      font-size: 2em;
+      transition: all ease .2s;
+
+      &:hover {
+        color: $dark_color;
+      }
+    }
+  }
+  @include mq($max-width: $vw-medium, $min-width: $vw-small) {
+    .side-menu__top .side-menu__search {
+      display: flex;
+    }
+  }
+}

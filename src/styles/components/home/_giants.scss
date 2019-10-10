@@ -1,0 +1,53 @@
+.home__giants {
+  z-index: z("giants");
+  background-color: $lightgreen;
+
+  .point__arrow {
+    color: $orange;
+  }
+
+  .giants__title {
+    margin-bottom: 20px;
+  }
+
+  .giants__title strong,
+  a,
+  p strong {
+    color: $orange;
+  }
+
+  a {
+    @include underline($orange, darken($orange, 30%));
+  }
+
+  .giants__content {
+    padding: 20px 0;
+    width: 60%;
+  }
+
+
+  @include mq($max-width: $vw-large) {
+
+  }
+
+  @include mq($max-width: $vw-medium) {
+    .giants__content {
+      padding: 30px 0 0px;
+      width: 100%;
+    }
+
+    .giants__title {
+      text-align: center;
+    }
+  }
+
+  @include mq($max-width: $vw-small) {
+    .giants__title {
+      margin-bottom: 0;
+    }
+
+    .giants__list {
+      margin: 0;
+    }
+  }
+}

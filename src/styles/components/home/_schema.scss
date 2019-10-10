@@ -1,0 +1,139 @@
+.home__schema {
+  background-color: $orange;
+  text-align: center;
+  z-index: z("schema");
+
+  .status__todo {
+    color:$orange;
+  }
+
+  .status__done {
+    color:$dark_color;
+  }
+
+  .status__in_proggress {
+    background-color: $lightgreen;
+    color:$dark_color;
+  }
+
+  .status__funding {
+    background-color: $dark_color;
+    color:$lightgreen;
+  }
+
+  .schema__title {
+    color: $white;
+    margin-bottom: 50px;
+
+    strong {
+      color: $green;
+      background: $all_in_one_bg;
+      padding-left: 3px;
+      padding-right: 3px;
+    }
+  }
+
+  .schema__part {
+    margin: 20px auto;
+
+    h4 {
+      font-size: 1.4rem;
+      background-color: $dark_color;
+    }
+
+    .schema__group {
+      margin: 10px auto 20px;
+      position: relative;
+      display: inline-flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    &:last-child {
+      .lines {
+        height: 50px;
+      }
+    }
+  }
+
+  .schema__item {
+    position: relative;
+    padding: 10px;
+    display: inline-block;
+    width: 340px;
+    min-height: 150px;
+    color: $blackblue;
+    font-weight: $normal;
+  }
+
+  .schema__card {
+    @include z-depth-5;
+    background-color: $white;
+    padding: 20px;
+    text-align: left;
+    align-items: center;
+    border: 5px solid $white;
+    display: flex;
+    height: 100%;
+    transition: box-shadow ease .2s;
+
+    &:not(:hover) {
+      @include z-depth-0;
+    }
+
+    h3 {
+      color: $orange;
+      margin-bottom: 10px;
+    }
+
+    .schema__icon {
+      color: $orange;
+      font-size: 6rem;
+      margin-right: 20px;
+    }
+
+    .schema__content p {
+      font-size: 1.4rem;
+    }
+  }
+
+  .lines {
+    position: absolute;
+    z-index: z('below');
+    left: 0;
+    top: 0;
+    height: calc(100% + 80px);
+    width: calc(100% - 80px);
+    top: -25px;
+    left: 40px;
+    background-color: $darkblue;
+  }
+
+  .line {
+    stroke: $clearblue;
+    stroke-width: 4;
+    stroke-dashoffset: 0;
+    stroke-dasharray: 5;
+    animation: dash 1s infinite linear;
+  }
+
+
+  @include mq($max-width: $vw-huge) {
+
+  }
+  @include mq($max-width: $vw-thin) {
+    .schema__item {
+      padding: 10px 0;
+      width: calc(100% - 20px);
+    }
+  }
+}
+@keyframes dash {
+  from {
+    stroke-dashoffset: 10;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
+}
