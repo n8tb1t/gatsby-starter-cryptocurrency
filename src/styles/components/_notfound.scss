@@ -1,6 +1,6 @@
 .notfound {
   height: $pageH;
-  background-color: $clearblue;
+  background-color: $dark_color;
 
   .notfound__content {
     position: relative;
@@ -28,7 +28,7 @@
   }
 
   h1 {
-    color: $darkblue;
+    color: $orange;
     font-size: 8rem;
     margin-bottom: .5em;
   }
@@ -36,6 +36,7 @@
   p {
     font-size: 2rem;
     line-height: 2.4rem;
+    color:$white;
   }
   @include mq($max-width: $vw-medium) {
     text-align: center;
