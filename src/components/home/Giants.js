@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from '../../images/icon.png';
 import HomeList from './HomeList';
 
 const data = [

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
-import LogoCX from '../../images/icon.png';
+// import LogoCX from '../../images/icon.png';
+import LogoCX from '../../images/logo.svg';
 
 class Footer extends Component {
   /* eslint-disable no-undef */

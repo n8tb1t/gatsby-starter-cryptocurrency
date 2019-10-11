@@ -5,7 +5,8 @@ import links from '../../data/menu';
 import Search from './Search';
 import MenuItem from './MenuItem';
 
-import LogoCX from '../../images/icon.png';
+// import LogoCX from '../../images/icon.png';
+import LogoCX from '../../images/logo.svg';
 
 const nav = links.map(link => <MenuItem key={link.text} {...link} />);
 
