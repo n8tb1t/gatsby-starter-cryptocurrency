@@ -1,4 +1,26 @@
+# Idea profile
+.idea/workspace.xml
+.idea/usage.statistics.xml
+.idea/tasks.xml
+
+# dotenv environment variables file
+.env
+
+# Node
+node_modules
+
+# Gatsby files
 .cache/
-node_modules/
-public/
-src/pages/docs/
+public
+schema.graphql
+content/docs/
+
+
+# Yarn
+yarn-error.log
+
+# ESLint
+.eslintcache
+
+# Temporary files
+.temp

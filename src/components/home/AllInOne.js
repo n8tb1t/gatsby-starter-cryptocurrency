@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 const data = [
   <p>
@@ -13,15 +13,14 @@ const data = [
   </p>,
   <p>
     <strong>Decentralized</strong> and not controlled by any entity or <strong>government</strong>
-
-  </p>,
-];
+  </p>
+]
 
 const circles = data.map((content, index) => (
   <article key={`article${index}`} className="aio__circle">
     {content}
   </article>
-));
+))
 
 const AllInOne = () => (
   <section className="home__part home__all-in-one">
@@ -32,6 +31,6 @@ const AllInOne = () => (
       <div className="aio__circles">{circles}</div>
     </div>
   </section>
-);
+)
 
-export default AllInOne;
+export default AllInOne

@@ -1,5 +1,5 @@
 module.exports = Object.freeze({
-  docPagesDirectory: `${__dirname}/src/pages/docs/`,
+  docPagesDirectory: `${__dirname}/content/docs/`,
   current: 'current',
   versions: ['master'],
   currentVersion: '0.4',
