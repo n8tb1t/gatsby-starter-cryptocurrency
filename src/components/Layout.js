@@ -9,6 +9,8 @@ import SideMenu from './layout/SideMenu';
 import '../styles/main.scss';
 import helmetConfig from '../helmetConfig';
 
+require('prismjs/plugins/line-numbers/prism-line-numbers.css')
+
 class Layout extends Component {
   state = {
     showResponsiveMenu: false,

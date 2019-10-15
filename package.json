@@ -29,6 +29,7 @@
     "react-helmet": "^5.2.1"
   },
   "devDependencies": {
+    "@hot-loader/react-dom": "^16.10.2",
     "gatsby-plugin-catch-links": "^2.1.15",
     "gatsby-remark-autolink-headers": "^2.1.16",
     "gatsby-remark-copy-images": "^0.2.1",
@@ -38,6 +39,7 @@
     "gatsby-source-filesystem": "^2.1.33",
     "gatsby-transformer-remark": "^2.6.30",
     "js-yaml": "^3.13.1",
+    "lodash": "^4.17.15",
     "syncyarnlock": "^1.0.19",
     "xmldom": "^0.1.27",
     "xpath": "^0.0.27"

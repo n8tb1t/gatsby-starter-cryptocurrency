@@ -870,6 +870,16 @@
   dependencies:
     "@hapi/hoek" "8.x.x"
 
+"@hot-loader/react-dom@^16.10.2":
+  version "16.10.2"
+  resolved "https://registry.yarnpkg.com/@hot-loader/react-dom/-/react-dom-16.10.2.tgz#91920442252acac6f343eef5df41aca333f7dcea"
+  integrity sha512-vbrSDuZMoE1TXiDNAVCSAcIS6UX55Fa9KF0MD0wQgOaOIPZs/C6CtEDUcnNFEwTQ5ciIULcp+96lQlSuANNagA==
+  dependencies:
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
+    prop-types "^15.6.2"
+    scheduler "^0.16.2"
+
 "@jimp/bmp@^0.6.8":
   version "0.6.8"
   resolved "https://registry.yarnpkg.com/@jimp/bmp/-/bmp-0.6.8.tgz#8abbfd9e26ba17a47fab311059ea9f7dd82005b6"

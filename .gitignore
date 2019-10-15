@@ -14,7 +14,7 @@ node_modules
 public
 schema.graphql
 content/docs/
-
+content/blog/
 
 # Yarn
 yarn-error.log

@@ -1,4 +1,5 @@
 const createDocsPages = require('./create-pages/create-docs-pages')
+const createBlogPages = require('./create-pages/create-blog-pages')
 
 // const createMarkdownPages = require('./create-pages/create-markdown-pages')
 // const createAuthorsPages = require('./create-pages/create-authors-pages')
@@ -9,6 +10,7 @@ const createDocsPages = require('./create-pages/create-docs-pages')
 
 module.exports = async ({ graphql, actions }) => {
   await createDocsPages(graphql, actions)
+  await createBlogPages(graphql, actions)
   // await createMarkdownPages(graphql, actions)
   // await createAuthorsPages(graphql, actions)
   // await createPostsPagination(graphql, actions)

@@ -6,9 +6,13 @@ module.exports = {
     title: 'Catalyst Coin',
     siteUrl: process.env.GATSBY_ROOT_URL
   },
+  mapping: {
+    'MarkdownRemark.frontmatter.author': `AuthorYaml`,
+  },
   plugins: [
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sass',
+    'gatsby-transformer-yaml',
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -24,6 +28,20 @@ module.exports = {
       }
     },
     {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: `${__dirname}/content/blog`,
+        name: 'blog'
+      }
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: `${__dirname}/content/yaml`,
+        name: 'yaml'
+      }
+    },
+    {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
@@ -36,7 +54,12 @@ module.exports = {
           },
           'gatsby-remark-external-links',
           'gatsby-remark-autolink-headers',
-          'gatsby-remark-prismjs',
+          {
+            resolve: `gatsby-remark-prismjs`,
+            options: {
+              showLineNumbers: true,
+            }
+          },
           'gatsby-remark-copy-linked-files'
         ]
       }
@@ -96,8 +119,6 @@ module.exports = {
     },
     // 'gatsby-plugin-offline',
     'gatsby-transformer-sharp',
-    'gatsby-transformer-yaml',
-
     // {
     //   resolve: 'gatsby-plugin-google-analytics',
     //   options: {

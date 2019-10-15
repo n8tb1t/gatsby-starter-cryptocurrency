@@ -1,5 +1,7 @@
 <component name="ProjectCodeStyleConfiguration">
   <code_scheme name="Project" version="173">
+    <option name="AUTODETECT_INDENTS" value="false" />
+    <option name="LINE_SEPARATOR" value="&#10;" />
     <JSCodeStyleSettings version="0">
       <option name="USE_SEMICOLON_AFTER_STATEMENT" value="false" />
       <option name="FORCE_SEMICOLON_STYLE" value="true" />
@@ -9,5 +11,12 @@
     <MarkdownNavigatorCodeStyleSettings>
       <option name="RIGHT_MARGIN" value="72" />
     </MarkdownNavigatorCodeStyleSettings>
+    <codeStyleSettings language="JavaScript">
+      <indentOptions>
+        <option name="INDENT_SIZE" value="2" />
+        <option name="CONTINUATION_INDENT_SIZE" value="2" />
+        <option name="TAB_SIZE" value="2" />
+      </indentOptions>
+    </codeStyleSettings>
   </code_scheme>
 </component>

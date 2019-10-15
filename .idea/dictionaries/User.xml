@@ -2,6 +2,8 @@
   <dictionary name="User">
     <words>
       <w>dotenv</w>
+      <w>frontmatter</w>
+      <w>jsyaml</w>
       <w>unconfiscatable</w>
     </words>
   </dictionary>
