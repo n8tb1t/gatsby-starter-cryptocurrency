@@ -25,6 +25,14 @@ export const query = graphql`
           slug
         }
       }
+      titleImageCC
+      titleImage {
+          childImageSharp {
+              fluid(maxWidth: 700, quality: 70) {
+                  ...GatsbyImageSharpFluid
+              }
+          }
+      }
     }
   }
 `

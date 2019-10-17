@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import classNames from 'classnames';
-import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
-import Header from './layout/Header';
-import BurgerButton from './layout/BurgerButton';
-import Footer from './layout/Footer';
-import SideMenu from './layout/SideMenu';
-import '../styles/main.scss';
-import helmetConfig from '../helmetConfig';
+import React, { Component } from 'react'
+import classNames from 'classnames'
+import PropTypes from 'prop-types'
+import Helmet from 'react-helmet'
+import Header from './layout/Header'
+import BurgerButton from './layout/BurgerButton'
+import Footer from './layout/Footer'
+import SideMenu from './layout/SideMenu'
+import '../styles/main.scss'
+import helmetConfig from '../helmetConfig'
 
 require('prismjs/plugins/line-numbers/prism-line-numbers.css')
 
@@ -17,13 +17,13 @@ class Layout extends Component {
   };
 
   showMenu = open => {
-    this.setState(prevState => ({ ...prevState, showResponsiveMenu: open }));
+    this.setState(prevState => ({ ...prevState, showResponsiveMenu: open }))
   };
 
   render() {
-    const { children, location } = this.props;
-    const open = this.state.showResponsiveMenu;
-    const withSecondMenuDisplayed = -1 !== location.pathname.search('/docs');
+    const { children, location } = this.props
+    const open = this.state.showResponsiveMenu
+    const withSecondMenuDisplayed = location.pathname.search('/docs') !== -1
 
     return (
       <div className={classNames('main full', { open, 'with-second-menu-displayed': withSecondMenuDisplayed })}>
@@ -37,17 +37,17 @@ class Layout extends Component {
         <div role="presentation" className="overlay" onClick={this.showMenu.bind(null, false)} />
         <SideMenu open={open} />
       </div>
-    );
+    )
   }
 }
 
 Layout.propTypes = {
   children: PropTypes.any,
   location: PropTypes.object.isRequired,
-};
+}
 
 Layout.defaultProps = {
   children: null,
-};
+}
 
-export default Layout;
+export default Layout
