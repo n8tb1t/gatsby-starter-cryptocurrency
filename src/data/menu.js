@@ -54,6 +54,10 @@ const menu = [
     ],
   },
   {
+    text: 'Blog',
+    path: '/blog/',
+  },
+  {
     text: 'Funding',
     path: 'https://funding.cryptocatalyst.net',
   },

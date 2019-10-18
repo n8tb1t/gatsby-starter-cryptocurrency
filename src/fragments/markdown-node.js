@@ -27,11 +27,18 @@ export const query = graphql`
       }
       titleImageCC
       titleImage {
-          childImageSharp {
-              fluid(maxWidth: 700, quality: 70) {
-                  ...GatsbyImageSharpFluid
-              }
+        childImageSharp {
+          fluid(maxWidth: 700, quality: 95) {
+            ...GatsbyImageSharpFluid
           }
+        }
+      }
+      titleImageHero: titleImage {
+        childImageSharp {
+          fluid(maxWidth: 700, maxHeight: 210,quality: 95, cropFocus: ATTENTION, srcSetBreakpoints: [700]) {
+            ...GatsbyImageSharpFluid
+          }
+        }
       }
     }
   }

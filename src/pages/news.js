@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
-import Helmet from 'react-helmet';
-import PropTypes from 'prop-types';
-import Layout from '../components/Layout';
-import Bird from '../images/twitter_bird.svg';
+import React, { Component } from 'react'
+import Helmet from 'react-helmet'
+import PropTypes from 'prop-types'
+import Layout from '../components/Layout'
+import Bird from '../images/twitter_bird.svg'
 
 class News extends Component {
   /* eslint-disable no-undef */
   componentDidMount() {
     if (twttr.widgets) {
-      this.createTimeline();
+      this.createTimeline()
     } else {
-      twttr.ready(this.createTimeline);
+      twttr.ready(this.createTimeline)
     }
   }
 
@@ -18,11 +18,11 @@ class News extends Component {
     twttr.widgets.createTimeline(
       {
         sourceType: 'profile',
-        screenName: 'catalyst_CX',
+        screenName: 'catalyst_CX'
       },
       this.timeline
-    );
-  };
+    )
+  }
   /* eslint-enable no-undef */
 
   render() {
@@ -43,18 +43,18 @@ class News extends Component {
               <div
                 className="twitter__timeline"
                 ref={el => {
-                  this.timeline = el;
+                  this.timeline = el
                 }}
               />
             </div>
           </section>
         </div>
       </Layout>
-    );
+    )
   }
 }
 News.propTypes = {
-  location: PropTypes.object.isRequired,
-};
+  location: PropTypes.object.isRequired
+}
 
-export default News;
+export default News

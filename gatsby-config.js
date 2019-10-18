@@ -7,7 +7,7 @@ module.exports = {
     siteUrl: process.env.GATSBY_ROOT_URL
   },
   mapping: {
-    'MarkdownRemark.frontmatter.author': `AuthorYaml`,
+    'MarkdownRemark.frontmatter.author': `AuthorYaml`
   },
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -57,7 +57,7 @@ module.exports = {
           {
             resolve: `gatsby-remark-prismjs`,
             options: {
-              showLineNumbers: true,
+              showLineNumbers: true
             }
           },
           'gatsby-remark-copy-linked-files'
@@ -115,6 +115,12 @@ module.exports = {
             density: '4.0'
           }
         ]
+      }
+    },
+    {
+      resolve: `gatsby-plugin-disqus`,
+      options: {
+        shortname: `catalyst-coin`
       }
     },
     // 'gatsby-plugin-offline',
