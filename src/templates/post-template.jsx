@@ -6,7 +6,7 @@ import { Disqus, CommentCount } from 'gatsby-plugin-disqus'
 import Layout from '../components/Layout'
 
 export default ({ data: { post }, location, pageContext }) => {
-  console.log(location.pathname)
+
   const disqusConfig = {
     url: `https://www.cryptocatalyst.net${  location.pathname}`,
     identifier: post.id,

@@ -4,6 +4,8 @@ const URL = require('url')
 const { createFilePath } = require(`gatsby-source-filesystem`)
 const { kebabCase } = require('lodash')
 
+const  createNodeId  = require('gatsby/dist/utils/create-node-id')
+
 const { current } = require('../../constants')
 
 const {
@@ -59,6 +61,11 @@ module.exports = ({ node, actions, getNode }) => {
   }
 
   if (parentNode.sourceInstanceName === 'blog') {
+    const title = node.frontmatter.title.replace(/<[^>]+>/g, '')
+
+    createNodeField({ node, name: `title`, value: title})
+    createNodeField({ node, name: `objectID`, value: createNodeId(title, 'blog')})
+
     const slug = node.frontmatter.slug || createFilePath({ node, getNode })
     createNodeField({ node, name: `slug`, value: slug })
 

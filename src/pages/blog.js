@@ -45,7 +45,7 @@ const PostsList = ({ posts }) => {
 }
 
 export default ({ data: { posts }, location, context }) => {
-  console.log(posts)
+
   return (
     <Layout location={location}>
       <div className="blog">

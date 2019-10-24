@@ -1,8 +1,11 @@
 <component name="ProjectDictionaryState">
   <dictionary name="User">
     <words>
+      <w>algolia</w>
+      <w>algoliasearch</w>
       <w>dotenv</w>
       <w>frontmatter</w>
+      <w>jsdom</w>
       <w>jsyaml</w>
       <w>openable</w>
       <w>unconfiscatable</w>

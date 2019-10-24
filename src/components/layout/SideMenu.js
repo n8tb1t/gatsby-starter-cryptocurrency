@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import links from '../../data/menu';
-import Search from './Search';
+// import Search from './Search';
 import MenuItem from './MenuItem';
 
 // import LogoCX from '../../images/icon.png';
@@ -19,7 +19,7 @@ const SideMenu = ({ open }) => (
         </div>
         <div className="logo__text">Catalyst Network</div>
       </div>
-      <Search className="side-menu__search" />
+
     </div>
     <nav className="side-menu__nav">
       <MenuItem key="home" path="/" text="Home" />
@@ -48,3 +48,4 @@ SideMenu.propTypes = {
 };
 
 export default SideMenu;
+{/*<Search className="side-menu__search" />*/}

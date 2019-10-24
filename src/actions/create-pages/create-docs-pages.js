@@ -18,7 +18,7 @@ versions.forEach(version => {
 
 module.exports = async (graphql, actions) => {
   const { createPage, createRedirect } = actions
-  const docPageTemplate = path.resolve('src/templates/doc.js')
+  const docPageTemplate = path.resolve('./src/templates/doc.js')
 
   const allDocsPages = await graphql(`
     query getAllDocsPages {
