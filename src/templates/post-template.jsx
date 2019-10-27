@@ -54,7 +54,7 @@ export default ({ data: { post }, location, pageContext }) => {
               </div>
             </div>
             <div className="blog__article" dangerouslySetInnerHTML={{ __html: post.html }} />
-            <Disqus config={disqusConfig} />
+            <Disqus className="blog__disqus" config={disqusConfig} />
           </div>
 
         </section>

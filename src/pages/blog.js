@@ -11,8 +11,12 @@ const PostsList = ({ posts }) => {
     } = post
     return (
       <div className="blog__post_item" key={slug}>
-        <a href={slug}><Img fluid={post.frontmatter.titleImageHero.childImageSharp.fluid} /></a>
-        <div className="blog__post_title"><a href={slug}>{post.frontmatter.title.replace(/<[^>]+>/g, '')}</a></div>
+        <a href={slug}>
+          <Img fluid={post.frontmatter.titleImageHero.childImageSharp.fluid} />
+        </a>
+        <div className="blog__post_title">
+          <a href={slug}>{post.frontmatter.title.replace(/<[^>]+>/g, '')}</a>
+        </div>
         <div className="post_info">
           <div className="post_info__meta">
             <div>
@@ -22,12 +26,10 @@ const PostsList = ({ posts }) => {
               <strong>Published:</strong> {post.frontmatter.date}
             </div>
             <div>
-              <strong>Author:</strong>{' '}
-              <span className="link">{post.frontmatter.author.id}</span>
+              <strong>Author:</strong> <span className="link">{post.frontmatter.author.id}</span>
             </div>
             <div>
-              <strong>Category:</strong>{' '}
-              <span className="link">{post.frontmatter.category}</span>
+              <strong>Category:</strong> <span className="link">{post.frontmatter.category}</span>
             </div>
             <div className="post_info__tags">
               <strong>Tags:</strong>{' '}
@@ -45,7 +47,6 @@ const PostsList = ({ posts }) => {
 }
 
 export default ({ data: { posts }, location, context }) => {
-
   return (
     <Layout location={location}>
       <div className="blog">

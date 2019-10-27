@@ -129,12 +129,18 @@
       //display: inline-block;
     }
   }
+  .blog__disqus {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
   .blog__article {
     padding-left: 20px;
     padding-right: 20px;
     text-align: left;
     letter-spacing: 0.05em;
     padding-bottom: 10px;
+
     p {
       line-height: 1.8em;
       padding-top: 10px;

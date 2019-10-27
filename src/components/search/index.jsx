@@ -11,39 +11,48 @@ import {
 
 import * as hitComps from './hitComps'
 
-const algoliaClient = algoliasearch('DCWT36AMWS', 'df50da353da7d8f17f4321fb0f2d6609')
+const searchClient = () => {
+  const algoliaClient = algoliasearch('DCWT36AMWS', 'df50da353da7d8f17f4321fb0f2d6609')
+  return {
+    search(requests) {
+      const shouldSearch = requests.some(({ params: { query } }) => query.length >= 3)
 
-const searchClient = {
-  search(requests) {
-    const shouldSearch = requests.some(({ params: { query } }) => query.length >= 3)
-    // const shouldSearch = true
-    if (shouldSearch) {
-      return algoliaClient.search(requests)
-    }
-    return Promise.resolve({
-      results: [{ hits: [] }]
-    })
-  },
-  searchForFacetValues: algoliaClient.searchForFacetValues
+      if (shouldSearch) {
+        return algoliaClient.search(requests)
+      }
+      return Promise.resolve({
+        results: [{ hits: [] }]
+      })
+    },
+    searchForFacetValues: algoliaClient.searchForFacetValues
+  }
 }
 
 const Input = connectSearchBox(({ refine, currentRefinement, children }) => {
-  const ref = useRef({ value: null })
   const [showResults, setShowResults] = useState('none')
 
+  const inputRef = useRef({ value: null })
+  const resultsRef = useRef({ value: null })
+
+  const isShowResults = query => setShowResults(query.length > 0 ? 'block' : 'none')
+
+  const handleFocus = e => isShowResults(e.target.value)
+
+  const events = [`mousedown`, `touchstart`]
+
+  const detectClickOutside = event =>
+    !resultsRef.current.contains(event.target) && setShowResults('none')
+
   useEffect(() => {
-    const searchInput = ref.current
-    const checkValue = () => {
-      const shouldBe = searchInput.value.length > 0 ? 'block' : 'none'
-      setShowResults(shouldBe)
+    for (const event of events) document.addEventListener(event, detectClickOutside)
+    return () => {
+      for (const event of events) document.removeEventListener(event, detectClickOutside)
     }
+  }, [events])
 
-    checkValue()
-
-    // const handleClick = e => checkValue(e)
-    // searchInput.addEventListener('click', handleClick)
-    // return () => searchInput.removeEventListener('click', handleClick)
-  }, [ref.current.value])
+  useEffect(() => {
+    isShowResults(inputRef.current.value)
+  }, [inputRef.current.value])
 
   return (
     <Fragment>
@@ -51,15 +60,18 @@ const Input = connectSearchBox(({ refine, currentRefinement, children }) => {
       <form>
         <span className="search__form">
           <input
-            ref={ref}
+            ref={inputRef}
             onChange={e => refine(e.target.value)}
-            // onBlur={() => setShowResults('none')}
             value={currentRefinement}
+            onFocus={handleFocus}
             className="search__input"
             type="text"
             placeholder="Search"
           />
-          <div style={{ display: showResults }}> {children} </div>
+          <div ref={resultsRef} style={{ display: showResults }}>
+            {' '}
+            {children}{' '}
+          </div>
         </span>
       </form>
     </Fragment>
@@ -67,7 +79,7 @@ const Input = connectSearchBox(({ refine, currentRefinement, children }) => {
 })
 
 const Results = connectStateResults(({ searchState: state, searchResults: res, children }) =>
-  res && res.nbHits > 0 ? (
+  res && res.nbHits > 0 && state.query.length >= 3 ? (
     children
   ) : (
     <div className="search__results_empty">No results for {state.query}</div>
@@ -82,19 +94,13 @@ const Stats = connectStateResults(
 export default function Search({ indices }) {
   return (
     <div className="search header__search">
-      <InstantSearch indexName={indices[0].name} searchClient={searchClient}>
-
+      <InstantSearch indexName={indices[0].name} searchClient={searchClient()}>
         <Input>
           <div className="search__results">
             {indices.map(({ name, title, hitComp, config }) => (
               <Index key={name} indexName={name}>
-                <Configure
-                  distinct
-                  {...config}
-                />
-                <div className="search__results_title">
-                  {title} <Stats />
-                </div>
+                <Configure distinct length={3} {...config} />
+                <div className="search__results_title">{title}</div>
 
                 <Results>
                   <Hits hitComponent={hitComps[hitComp]()} />

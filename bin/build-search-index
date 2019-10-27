@@ -7,6 +7,9 @@ const createNodeId = require('gatsby/dist/utils/create-node-id')
 const fs = require('fs')
 const fileContentHelper = require('../src/lib/fileContentHelper')
 
+var remark = require('remark')
+var strip = require('strip-markdown')
+
 const myContent = `{
   "data": {
     "allMarkdownRemark": {
@@ -666,37 +669,52 @@ const flattenDocs = arr =>
 const obj = JSON.parse(myContent)
 const altContent = flattenDocs(obj.data.allMarkdownRemark.edges)
 
-const newPages = altContent
-  .map(docPage => {
-    const { content, slug, headings } = docPage
-    const slugger = new GithubSlugger()
+const newPages = altContent =>
+  altContent
+    .map(docPage => {
+      const { content, slug, headings } = docPage
+      const slugger = new GithubSlugger()
 
-    return content
-      .split(/^#{1,2} (.*)$/gm)
-      .slice(1)
-      .map(pageChapter => pageChapter.trim())
-      .map((current, index, initialArray) => {
-        if (index === 0 || index % 2 === 0) {
-          const parentSlug = slug.replace(/current/, 'docs')
-          const pageContent = initialArray[index + 1]
-          const chapterSlug = `${parentSlug}#${slugger.slug(initialArray[index])}`
+      return content
+        .split(/^#{1,2} (.*)$/gm)
+        .slice(1)
+        .map(pageChapter => pageChapter.trim())
+        .map((current, index, initialArray) => {
+          if (index === 0 || index % 2 === 0) {
+            const parentSlug = slug.replace(/current/, 'docs')
+            const pageContent = initialArray[index + 1]
+            const chapterSlug = `${parentSlug}#${slugger.slug(initialArray[index])}`
 
-          return {
-            objectID: createNodeId(`${chapterSlug}objectID`, 'docs'),
-            parentSlug,
-            parentTitle: headings[0].value,
-            chapterSlug,
-            chapterTitle: initialArray[index],
-            contentDigest: createNodeId(`${pageContent + chapterSlug}content`, 'docs'),
-            pageContent
+            return {
+              objectID: createNodeId(`${chapterSlug}objectID`, 'docs'),
+              parentSlug,
+              parentTitle: headings[0].value,
+              chapterSlug,
+              chapterTitle: initialArray[index],
+              contentDigest: createNodeId(`${pageContent + chapterSlug}content`, 'docs'),
+              pageContent
+            }
           }
-        }
-      })
-      .filter(value => typeof value !== 'undefined')
-  })
-  .flat()
+        })
+        .filter(value => typeof value !== 'undefined')
+    })
+    .flat()
 
-console.log(newPages)
+const stripMarkdown = async object => {
+  const newObject = await Promise.all(
+    object.map(async element => {
+      element.pageContent = (await remark()
+        .use(strip)
+        .process(element.pageContent)).toString()
+      return element
+    })
+  )
+  return newObject
+}
+
+stripMarkdown(newPages(altContent))
+
+// console.log( clean(newPages(altContent)))
 
 // return ({chapterTitle:initialArray[index], PageContent:initialArray[index+1]})
 // console.log(pageChapters)

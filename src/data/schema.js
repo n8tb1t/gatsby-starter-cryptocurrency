@@ -64,7 +64,7 @@ const schema = [
         status: 1,
         icon: 'wallet',
         link: '/docs/catalyst-specs/getting-started',
-        title: 'Papper Wallet',
+        title: 'Paper Wallet',
         text: 'now by writing down and protecting the mnemonic seed, you will always have access to your funds!',
       },{
         status: 1,
@@ -99,7 +99,7 @@ const schema = [
       {
         status: 2,
         icon: 'test',
-        link: '/articles',
+        link: '/blog',
         title: 'Article series',
         text:
           'Starting a series of articles on Medium social platform with news and updates about Catalyst life.',

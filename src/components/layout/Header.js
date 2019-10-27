@@ -2,13 +2,13 @@ import React from 'react'
 import { Link } from 'gatsby'
 import links from '../../data/menu'
 import LogoCX from '../../images/logo.svg'
-// import Search from './Search'
 import MenuItem from './MenuItem'
 import Search from '../search'
 
 const nav = links.map(link => <MenuItem key={link.text} {...link} />)
 
 const blogQueryConfig = {
+  hitsPerPage: 3,
   attributesToRetrieve: ['slug'],
   attributesToHighlight: ['title', 'date'],
   attributesToSnippet: ['internal.content:10'],
@@ -16,6 +16,7 @@ const blogQueryConfig = {
 }
 
 const docsQueryConfig = {
+  hitsPerPage: 3,
   attributesToRetrieve: ['parentSlug', 'chapterSlug'],
   attributesToHighlight: ['parentTitle', 'chapterTitle'],
   attributesToSnippet: ['pageContent:15'],

@@ -1,4 +1,4 @@
-const code = `{
+export default `{
   "jsonrpc":"2.0",
   "result":{
     "block":{
@@ -33,6 +33,4 @@ const code = `{
     },
     "status":"OK"
   }
-}`;
-
-export default code;
+}`

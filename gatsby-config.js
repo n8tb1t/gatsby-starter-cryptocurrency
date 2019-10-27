@@ -5,7 +5,7 @@ const createNodeId = require('gatsby/dist/utils/create-node-id')
 const dotenv = require('dotenv').config({ path: '.env.gatsby' })
 
 const getPostsQuery = `query getPostsIndex {
-  result: allMarkdownRemark(limit: 1000, filter: {fields: {sourceType: {eq: "blog"}}}) {
+  result: allMarkdownRemark(limit: 1000, filter: {fields: {sourceType: {eq: "blog"}}, frontmatter: { draft: { ne: true }}}) {
     edges {
       node {
         frontmatter {
@@ -86,6 +86,7 @@ const flattenDocs = arr =>
     ...internal,
     headings
   }))
+
 
 const queries = [
   {
@@ -170,7 +171,7 @@ module.exports = {
           {
             resolve: `gatsby-remark-prismjs`,
             options: {
-              showLineNumbers: true
+              showLineNumbers: false
             }
           },
           'gatsby-remark-copy-linked-files'
