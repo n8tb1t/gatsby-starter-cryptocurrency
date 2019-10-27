@@ -16,6 +16,7 @@
   },
   "plugins": ["react", "react-hooks", "jest", "jsx-a11y", "import"],
   "globals": {
+    "twttr": true,
     "pageMeta": true,
     "graphql": true,
     "__PATH_PREFIX__": true,
