@@ -3,7 +3,8 @@
   position: relative;
   min-height: $pageH;
   text-align: center;
-
+  overflow-wrap: break-word;
+  
   h1 {
     color: $white;
     max-width: 700px;

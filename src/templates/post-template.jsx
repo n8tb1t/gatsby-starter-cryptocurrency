@@ -2,7 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import Helmet from 'react-helmet'
 import Img from 'gatsby-image'
-import { Disqus, CommentCount } from 'gatsby-plugin-disqus'
+import { Disqus } from 'gatsby-plugin-disqus'
 import Layout from '../components/Layout'
 
 export default ({ data: { post }, location, pageContext }) => {

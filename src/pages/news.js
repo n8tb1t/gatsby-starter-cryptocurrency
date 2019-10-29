@@ -4,6 +4,8 @@ import Helmet from 'react-helmet'
 import Layout from '../components/Layout'
 import Bird from '../images/twitter_bird.svg'
 
+const {siteMetadata: {twitter}} = require('../../config')
+
 export default ({ location }) => {
   const timeline = useRef(null)
 
@@ -12,7 +14,7 @@ export default ({ location }) => {
       twttr.widgets.createTimeline(
         {
           sourceType: 'profile',
-          screenName: 'catalyst_CX'
+          screenName: twitter
         },
         timeline.current
       )

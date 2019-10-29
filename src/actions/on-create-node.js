@@ -8,9 +8,7 @@ const  createNodeId  = require('gatsby/dist/utils/create-node-id')
 
 const { current } = require('../../constants')
 
-const {
-  slugs: { tagPrefix, categoryPrefix, authorPrefix }
-} = require('../lib/configLoader')
+const {slugs: { tagPrefix, categoryPrefix, authorPrefix }} = require('../../config')
 
 module.exports = ({ node, actions, getNode }) => {
   const { createNodeField } = actions

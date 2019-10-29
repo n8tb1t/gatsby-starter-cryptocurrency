@@ -1,3 +1,4 @@
+
 import React, { useState, useRef, useEffect, Fragment } from 'react'
 import algoliasearch from 'algoliasearch/lite'
 import {
@@ -11,8 +12,11 @@ import {
 
 import * as hitComps from './hitComps'
 
+const {algolia} = require('../../../config')
+
 const searchClient = () => {
-  const algoliaClient = algoliasearch('DCWT36AMWS', 'df50da353da7d8f17f4321fb0f2d6609')
+
+  const algoliaClient = algoliasearch(algolia.appID, algolia.apiKey)
   return {
     search(requests) {
       const shouldSearch = requests.some(({ params: { query } }) => query.length >= 3)
@@ -84,11 +88,6 @@ const Results = connectStateResults(({ searchState: state, searchResults: res, c
   ) : (
     <div className="search__results_empty">No results for {state.query}</div>
   )
-)
-
-const Stats = connectStateResults(
-  ({ searchResults: res }) =>
-    res && res.nbHits > 0 && `${res.nbHits} result${res.nbHits > 1 ? `s` : ``}`
 )
 
 export default function Search({ indices }) {

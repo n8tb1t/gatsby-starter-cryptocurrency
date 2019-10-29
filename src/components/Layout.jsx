@@ -1,18 +1,21 @@
 import React, { useState } from 'react'
 import classNames from 'classnames'
 import Helmet from 'react-helmet'
+
 import Header from './layout/Header'
-import BurgerButton from './layout/BurgerButton'
 import Footer from './layout/Footer'
 import SideMenu from './layout/SideMenu'
-import '../styles/main.scss'
-import helmetConfig from '../helmetConfig'
 
-// require('prismjs/plugins/line-numbers/prism-line-numbers.css')
+import BurgerButton from './layout/BurgerButton'
+
+import '../styles/main.scss'
+
+import helmetConfig from '../helmetConfig'
 
 export default ({ children, location }) => {
   const [showMenu, setShowMenu] = useState(false)
   const withSecondMenuDisplayed = location.pathname.search('/docs') !== -1
+
   return (
     <div
       className={classNames('main full', {

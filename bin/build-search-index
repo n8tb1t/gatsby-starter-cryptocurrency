@@ -601,64 +601,6 @@ const outlinePath = `${dir}/outline.yaml`
 const loadedOutline = jsyaml.safeLoad(readFileSync(outlinePath, 'utf8'))
 const versionPath = join(docPagesDirectory, versionDirectory)
 
-// loadedOutline.chapters.map(chapter => {
-//   const chapterPath = join(versionPath, chapter.path)
-//
-//   const files = readdirSync(chapterPath)
-//     .filter(file => file.endsWith('.md'))
-//     .map(file => file.slice(0, -3))
-//
-//   chapter.items = chapter.items.filter(item => files.includes(item))
-//
-//   const items = [...new Set(chapter.items.concat(files))].map(file => {
-//     const fileContent = fileContentHelper.getFileContent(chapterPath, file, true)
-//     //       // console.log(chapter.title)
-//     //       // console.log(join(chapterPath,file))
-//     // const content = readFileSync(join(chapterPath,file), 'utf8')
-//     const orig = fileContent.split('\n').slice()
-//
-//     const doc = []
-//
-//     for (let i = 0, l = orig.length; i < l; i += 1) {
-//       // console.log(orig[i])
-//       if (orig[i].match(/^#{1,2} (.*)$/gm)) {
-//         const parentSlug = `/docs/${chapter.path}`
-//         const chapterTitle = orig[i].replace(/^#{1,2}/, '').trim()
-//         const slugger = new GithubSlugger()
-//         doc.push({
-//           parentTitle: chapter.title,
-//           parentSlug,
-//           chapterTitle,
-//           chapterSlug: `${parentSlug}/${file}/#${slugger.slug(chapterTitle)}`.replace('/index', ''),
-//           chapterContent: ''
-//         })
-//       } else {
-//         doc[doc.length - 1].chapterContent += `${orig[i]}\n`
-//       }
-//     }
-//
-//     const md = doc.map(chapter => {
-//       return {
-//         ...chapter,
-//         chapterContent: chapter.chapterContent.trim(),
-//         contentSRC: createNodeId(chapter.chapterContent, 'docs')
-//       }
-//     })
-//     // console.log(md[0])
-//     md.forEach(el => {
-//       // console.log('start el')
-//       // console.log(el)
-//       // console.log(el.content.trim())
-//       // console.log(el.content.trim())
-//       // console.log('end el')
-//     })
-//
-//     // return fileProcessor.processFile(resolve(chapterPath), file)[0]
-//   })
-//
-//   return { ...chapter, items }
-// })
-
 const flattenDocs = arr =>
   arr.map(({ node: { fields, headings, internal } }) => ({
     ...fields,
@@ -714,11 +656,4 @@ const stripMarkdown = async object => {
 
 stripMarkdown(newPages(altContent))
 
-// console.log( clean(newPages(altContent)))
 
-// return ({chapterTitle:initialArray[index], PageContent:initialArray[index+1]})
-// console.log(pageChapters)
-// const zz = []
-// for (let index = 0, l = pageChapters.length; index < l; index += 2) {
-//    zz.push({chapterTitle:pageChapters[index], PageContent:pageChapters[index+1]})
-// }

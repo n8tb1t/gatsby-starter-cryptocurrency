@@ -63,16 +63,16 @@ export default ({ data: { posts }, location, context }) => {
 }
 
 export const query = graphql`
-  query PostsByDate {
-    posts: allMarkdownRemark(
-      filter: { fields: { sourceType: { eq: "blog" } }, frontmatter: { draft: { ne: true } } }
-      sort: { order: DESC, fields: [frontmatter___date, fields___slug] }
-    ) {
-      edges {
-        node {
-          ...markdown_node
+    query PostsByDate {
+        posts: allMarkdownRemark(
+            filter: { fields: { sourceType: { eq: "blog" } }, frontmatter: { draft: { ne: true } } }
+            sort: { order: DESC, fields: [frontmatter___date, fields___slug] }
+        ) {
+            edges {
+                node {
+                    ...markdown_node
+                }
+            }
         }
-      }
     }
-  }
 `

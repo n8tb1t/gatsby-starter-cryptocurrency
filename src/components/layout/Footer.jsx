@@ -2,13 +2,18 @@ import React, { useRef, useEffect } from 'react'
 
 import LogoCX from '../../images/logo.svg'
 
+const {
+  projectGithub,
+  siteMetadata: { twitter }
+} = require('../../../config')
+
 export default () => {
   const twitterButton = useRef(null)
 
   useEffect(() => {
     const createWidget = () => {
       // noinspection JSUnresolvedVariable,JSUnresolvedFunction
-      twttr.widgets.createFollowButton('catalyst_CX', twitterButton.current, {
+      twttr.widgets.createFollowButton(twitter, twitterButton.current, {
         size: 'medium',
         showScreenName: false
       })
@@ -60,7 +65,7 @@ export default () => {
       <div className="footer__follow">
         <iframe
           title="github"
-          src="https://ghbtns.com/github-btn.html?user=catalystdevelopment&repo=catalyst&type=star&count=true&size=small"
+          src={`https://ghbtns.com/github-btn.html?user=${projectGithub.user}&repo=${projectGithub.repo}&type=star&count=true&size=small`}
           frameBorder={0}
           scrolling={0}
           width="100px"
