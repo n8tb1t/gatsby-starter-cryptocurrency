@@ -1,5 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useScrollPosition } from '@n8tb1t/use-scroll-position'
+
 import { Link } from 'gatsby'
+
 import links from '../../data/menu'
 import LogoCX from '../../images/logo.svg'
 import MenuItem from './MenuItem'
@@ -28,26 +31,49 @@ const searchIndices = [
   { name: `catalyst_docs`, title: `Documentation`, hitComp: `DocsHit`, config: docsQueryConfig }
 ]
 
-const Header = () => (
-  <header className="header openable">
-    <Link to="/" className="header__logo">
-      <img className="logo__cx" src={LogoCX} alt="Catalyst Logo" width="0" height="0" />
-      <span className="catalyst_network">Catalyst Network</span>
-    </Link>
-    <Search className="header__search" indices={searchIndices} />
-    <nav className="header__nav">{nav}</nav>
-    <nav className="header__social">
-      <a href="https://twitter.com/catalyst_CX" target="blank">
-        <i className="icon-twitter" />
-      </a>
-      <a href="https://github.com/catalystdevelopment" target="blank">
-        <i className="icon-github" />
-      </a>
-      <a href="https://discord.gg/Wf8hsBU" target="blank">
-        <i className="icon-discord" />
-      </a>
-    </nav>
-  </header>
-)
+const Header = () => {
+  const [headerStyle, setHeaderStyle] = useState({
+    transition: 'all 200ms ease-in'
+  })
+
+  useScrollPosition(
+    ({ prevPos, currPos }) => {
+      const isVisible = currPos.y > prevPos.y
+
+      const shouldBeStyle = {
+        visibility: isVisible ? 'visible' : 'hidden',
+        transition: `all 200ms ${isVisible ? 'ease-in' : 'ease-out'}`,
+        transform: isVisible ? 'none' : 'translate(0, -100%)'
+      }
+
+      if (shouldBeStyle.transition === headerStyle.transition) return
+      console.log(1)
+      setHeaderStyle(shouldBeStyle)
+    },
+    [headerStyle]
+  )
+
+  return (
+    <header style={{ ...headerStyle }} className="header openable">
+      <Link to="/" className="header__logo">
+        <img className="logo__cx" src={LogoCX} alt="Catalyst Logo" width="0" height="0" />
+        <span className="catalyst_network">Catalyst Network</span>
+      </Link>
+      <Search className="header__search" indices={searchIndices} />
+      <nav className="header__nav">{nav}</nav>
+      <nav className="header__social">
+        <a href="https://twitter.com/catalyst_CX" target="blank">
+          <i className="icon-twitter" />
+        </a>
+        <a href="https://github.com/catalystdevelopment" target="blank">
+          <i className="icon-github" />
+        </a>
+        <a href="https://discord.gg/Wf8hsBU" target="blank">
+          <i className="icon-discord" />
+        </a>
+      </nav>
+    </header>
+  )
+}
 
 export default Header

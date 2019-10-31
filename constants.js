@@ -4,5 +4,5 @@ module.exports = Object.freeze({
   versions: ['master'],
   currentVersion: '0.4',
   masterVersion: '0.5',
-  siteUrl: 'https://www.cryptocatalyst.net',
-});
+  siteUrl: 'https://www.cryptocatalyst.net'
+})

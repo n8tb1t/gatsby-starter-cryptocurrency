@@ -7,7 +7,7 @@
   height: 80px;
   width: 100%;
   background-color: $white;
-  z-index: z("header");
+  z-index: z('header');
 
   .header__logo,
   .header__nav,
@@ -43,16 +43,16 @@
     width: 70px;
     /*margin-left: 0px;*/
     margin-right: 0px;
-    background-color:$dark_color;
+    background-color: $dark_color;
     /*border-radius: 50%;*/
-    padding:5px;
+    padding: 5px;
     border: 5px solid #ff5646;
   }
 
   .catalyst_network {
-    color:$white;
-    background-color:$orange;
-    font-size:26px;
+    color: $white;
+    background-color: $orange;
+    font-size: 26px;
     text-shadow: 2px 2px #08080826;
     padding-right: 5px;
     padding-left: 5px;
@@ -78,7 +78,7 @@
       padding: 0 10px;
       color: $orange;
       font-size: 2.4em;
-      transition: all ease .2s;
+      transition: all ease 0.2s;
 
       &:hover {
         color: $dark_color;
@@ -92,7 +92,7 @@
 
   .menu-item {
     position: relative;
-    transition: all ease .2s;
+    transition: all ease 0.2s;
     height: 100%;
     display: flex;
     align-items: center;
@@ -105,7 +105,7 @@
 
       i,
       span {
-        transition: all ease .2s;
+        transition: all ease 0.2s;
         line-height: $headerH;
         font-size: 1.8em;
       }
@@ -131,7 +131,7 @@
         opacity: 1;
         background-color: $orange;
         transform: translateX(-50%);
-        transition: all ease .3s;
+        transition: all ease 0.3s;
       }
     }
 
@@ -145,7 +145,7 @@
       opacity: 0;
       transform: scale(0);
       transform-origin: top;
-      transition: top ease .2s, opacity ease .2s, transform 0s .3s;
+      transition: top ease 0.2s, opacity ease 0.2s, transform 0s 0.3s;
 
       .submenu__item {
         @include z-depth-4;
@@ -157,7 +157,7 @@
         font-size: 1.4em;
         background-color: $white;
         color: $blackblue;
-        transition: all ease .2s;
+        transition: all ease 0.2s;
 
         &:hover {
           background-color: $lightgrey;
@@ -188,7 +188,7 @@
 
   .menu-item:hover {
     .menu-item__submenu {
-      transition: top ease .2s .2s, opacity ease .2s .2s;
+      transition: top ease 0.2s 0.2s, opacity ease 0.2s 0.2s;
       opacity: 1;
       transform: none;
       top: calc(100% - 4px);
@@ -234,7 +234,6 @@
       width: 60px;
     }
 
-
     .header__logo {
       padding-left: 0;
       width: auto;
@@ -256,10 +255,9 @@
     .header__logo {
       padding: 0 20px;
     }
-
   }
 }
 
 .icon-discord {
-  font-size: 3.2em!important;
+  font-size: 3.2em !important;
 }

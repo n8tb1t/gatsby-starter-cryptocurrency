@@ -1,108 +1,6 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
-const GithubSlugger = require('github-slugger')
-const createNodeId = require('gatsby/dist/utils/create-node-id')
+const queries = require('./src/actions/algolia-queries')
 
-const { algolia, siteMetadata } = require('./config')
-
-const getPostsQuery = `query getPostsIndex {
-  result: allMarkdownRemark(limit: 1000, filter: {fields: {sourceType: {eq: "blog"}}, frontmatter: { draft: { ne: true }}}) {
-    edges {
-      node {
-        frontmatter {
-          slug
-          date(formatString: "MMM D, YYYY")
-        }
-        fields {
-          objectID
-          title
-        }
-        internal {
-          content
-          contentDigest
-        }
-      }
-    }
-  }
-}`
-
-const getDocsQuery = `query getDocsIndex {
-  result: allMarkdownRemark(filter: {fields: {sourceType: {eq: "docs"}, slug: {regex: "/current/"}}}) {
-    edges {
-      node {
-        fields {
-          slug
-        }
-        headings {
-          value
-        }
-        internal {
-          contentDigest
-          content
-        }
-      }
-    }
-  }
-}`
-
-const createDocPagesFromParagraphs = singlePages =>
-  singlePages
-    .map(docPage => {
-      const { content, slug, headings } = docPage
-      const slugger = new GithubSlugger()
-
-      return content
-        .split(/^#{1,2} (.*)$/gm)
-        .slice(1)
-        .map(pageChapter => pageChapter.trim())
-        .map((current, index, initialArray) => {
-          if (index === 0 || index % 2 === 0) {
-            const parentSlug = slug.replace(/current/, 'docs')
-            const pageContent = initialArray[index + 1]
-            const chapterSlug = `${parentSlug}#${slugger.slug(initialArray[index])}`
-
-            return {
-              objectID: createNodeId(`${chapterSlug}objectID`, 'docs'),
-              parentSlug,
-              parentTitle: headings[0].value,
-              chapterSlug,
-              chapterTitle: initialArray[index],
-              contentDigest: createNodeId(`${pageContent + chapterSlug}content`, 'docs'),
-              pageContent
-            }
-          }
-        })
-        .filter(value => typeof value !== 'undefined')
-    })
-    .flat()
-
-const flattenPosts = arr =>
-  arr.map(({ node: { frontmatter, fields, ...rest } }) => ({
-    ...frontmatter,
-    ...fields,
-    ...rest
-  }))
-
-const flattenDocs = arr =>
-  arr.map(({ node: { fields, headings, internal } }) => ({
-    ...fields,
-    ...internal,
-    headings
-  }))
-
-const queries = [
-  {
-    query: getPostsQuery,
-    transformer: ({ data }) => flattenPosts(data.result.edges),
-    indexName: 'catalyst_blog',
-    matchFields: ['slug']
-  },
-  {
-    query: getDocsQuery,
-    transformer: ({ data }) => createDocPagesFromParagraphs(flattenDocs(data.result.edges)),
-    indexName: 'catalyst_docs',
-    matchFields: ['contentDigest']
-  }
-]
+const { algolia, siteMetadata, disqus, contentPaths } = require('./config')
 
 module.exports = {
   siteMetadata,
@@ -110,6 +8,15 @@ module.exports = {
     'MarkdownRemark.frontmatter.author': `AuthorYaml`
   },
   plugins: [
+    'gatsby-plugin-react-helmet',
+    'gatsby-plugin-sass',
+    'gatsby-plugin-catch-links',
+    'gatsby-plugin-sitemap',
+    'gatsby-plugin-twitter',
+    'gatsby-plugin-remove-serviceworker',
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
+    'gatsby-transformer-yaml',
     {
       resolve: `gatsby-plugin-algolia-search`,
       options: {
@@ -117,13 +24,9 @@ module.exports = {
         apiKey: process.env.ALGOLIA_ADMIN_KEY,
         queries,
         chunkSize: 10000,
-        enablePartialUpdates: true,
-        matchFields: ['slug']
+        enablePartialUpdates: true
       }
     },
-    'gatsby-plugin-react-helmet',
-    'gatsby-plugin-sass',
-    'gatsby-transformer-yaml',
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -134,25 +37,24 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        path: `${__dirname}/content/docs`,
+        path: `${__dirname}/${contentPaths.docs}`,
         name: 'docs'
       }
     },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        path: `${__dirname}/content/blog`,
+        path: `${__dirname}/${contentPaths.blog}`,
         name: 'blog'
       }
     },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        path: `${__dirname}/content/yaml`,
+        path: `${__dirname}/${contentPaths.yaml}`,
         name: 'yaml'
       }
     },
-    'gatsby-plugin-sharp',
     {
       resolve: `gatsby-transformer-remark`,
       options: {
@@ -176,73 +78,24 @@ module.exports = {
         ]
       }
     },
-    'gatsby-plugin-catch-links',
-    'gatsby-plugin-sitemap',
-    'gatsby-plugin-twitter',
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: 'Catalyst Coin',
-        short_name: 'Catalyst Coin',
+        name: siteMetadata.name,
+        short_name: siteMetadata.name,
         start_url: '/',
-        background_color: '#67cece',
-        theme_color: '#38a9b4',
+        background_color: '#073B4C',
+        theme_color: '#073B4C',
         display: 'standalone',
         lang: 'en',
-        icons: [
-          {
-            src: '/android-icon-36x36.png',
-            sizes: '36x36',
-            type: 'image/png',
-            density: '0.75'
-          },
-          {
-            src: '/android-icon-48x48.png',
-            sizes: '48x48',
-            type: 'image/png',
-            density: '1.0'
-          },
-          {
-            src: '/android-icon-72x72.png',
-            sizes: '72x72',
-            type: 'image/png',
-            density: '1.5'
-          },
-          {
-            src: '/android-icon-96x96.png',
-            sizes: '96x96',
-            type: 'image/png',
-            density: '2.0'
-          },
-          {
-            src: '/android-icon-144x144.png',
-            sizes: '144x144',
-            type: 'image/png',
-            density: '3.0'
-          },
-          {
-            src: '/android-icon-192x192.png',
-            sizes: '192x192',
-            type: 'image/png',
-            density: '4.0'
-          }
-        ]
+        icon: `src/images/logo.svg`
       }
     },
     {
       resolve: `gatsby-plugin-disqus`,
       options: {
-        shortname: `catalyst-coin`
+        shortname: disqus.shortname
       }
-    },
-    // 'gatsby-plugin-offline',
-    'gatsby-transformer-sharp',
-    // {
-    //   resolve: 'gatsby-plugin-google-analytics',
-    //   options: {
-    //     trackingId: process.env.GATSBY_GOOGLE_ANALYTICS_TRACKING_ID,
-    //   },
-    // },
-    'gatsby-plugin-remove-serviceworker'
+    }
   ]
 }
