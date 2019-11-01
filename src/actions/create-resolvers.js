@@ -1,2 +1,1 @@
-module.exports = async ({ createResolvers }) => {
-}
+module.exports = async ({ createResolvers }) => {}

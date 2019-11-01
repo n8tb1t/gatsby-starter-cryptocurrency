@@ -1,48 +1,40 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'gatsby';
-import { Location } from '@reach/router';
-import classNames from 'classnames';
+import React from 'react'
+import { Link } from 'gatsby'
 
-const MenuItemLink = ({ path, children }) => {
+import classNames from 'classnames'
+
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { Location } from '@reach/router'
+
+const MenuItemLink = ({ path = null, children = null }) => {
   if (!path) {
-    return <div className="menu-item__link">{children}</div>;
+    return <div className="menu-item__link">{children}</div>
   }
 
-  if ('/' === path.substr(0, 1)) {
+  if (path.substr(0, 1) === '/') {
     return (
       <Link className="menu-item__link" to={path}>
         {children}
       </Link>
-    );
+    )
   }
 
   return (
     <a className="menu-item__link" href={path} target="_blank" rel="noopener noreferrer">
       {children}
     </a>
-  );
-};
+  )
+}
 
-MenuItemLink.propTypes = {
-  children: PropTypes.any,
-  path: PropTypes.string,
-};
-
-MenuItemLink.defaultProps = {
-  children: null,
-  path: null,
-};
-
-const MenuItem = ({ text, path, submenu }) => (
+export default ({ text, path = null, submenu = null }) => (
   <Location>
     {({ location }) => {
-      const current = location.pathname.includes(path);
+      const current = location.pathname.includes(path)
       return (
         <div
           className={classNames('menu-item', {
             withSubmenu: submenu,
-            current,
+            current
           })}
         >
           <MenuItemLink text={text} path={path}>
@@ -59,20 +51,7 @@ const MenuItem = ({ text, path, submenu }) => (
             </div>
           )}
         </div>
-      );
+      )
     }}
   </Location>
-);
-
-MenuItem.propTypes = {
-  text: PropTypes.string.isRequired,
-  path: PropTypes.string,
-  submenu: PropTypes.array,
-};
-
-MenuItem.defaultProps = {
-  submenu: null,
-  path: null,
-};
-
-export default MenuItem;
+)

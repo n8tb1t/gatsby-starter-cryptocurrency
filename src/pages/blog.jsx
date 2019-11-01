@@ -5,7 +5,7 @@ import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 
 const PostsList = ({ posts }) => {
-  const itemsList = posts.map((post, idx) => {
+  const itemsList = posts.map(post => {
     const {
       fields: { slug }
     } = post
@@ -46,33 +46,31 @@ const PostsList = ({ posts }) => {
   return <Fragment>{itemsList}</Fragment>
 }
 
-export default ({ data: { posts }, location, context }) => {
-  return (
-    <Layout location={location}>
-      <div className="blog">
-        <Helmet title="Blog Posts By Date" />
-        <section className="container">
-          <h1>
-            Latest <strong>Blog</strong> Posts:
-          </h1>
-          <PostsList posts={posts.edges.map(item => item.node)} context={context} />
-        </section>
-      </div>
-    </Layout>
-  )
-}
+export default ({ data: { posts }, location, context }) => (
+  <Layout location={location}>
+    <div className="blog">
+      <Helmet title="Blog Posts By Date" />
+      <section className="container">
+        <h1>
+          Latest <strong>Blog</strong> Posts:
+        </h1>
+        <PostsList posts={posts.edges.map(item => item.node)} context={context} />
+      </section>
+    </div>
+  </Layout>
+)
 
 export const query = graphql`
-    query PostsByDate {
-        posts: allMarkdownRemark(
-            filter: { fields: { sourceType: { eq: "blog" } }, frontmatter: { draft: { ne: true } } }
-            sort: { order: DESC, fields: [frontmatter___date, fields___slug] }
-        ) {
-            edges {
-                node {
-                    ...markdown_node
-                }
-            }
+  query PostsByDate {
+    posts: allMarkdownRemark(
+      filter: { fields: { sourceType: { eq: "blog" } }, frontmatter: { draft: { ne: true } } }
+      sort: { order: DESC, fields: [frontmatter___date, fields___slug] }
+    ) {
+      edges {
+        node {
+          ...markdown_node
         }
+      }
     }
+  }
 `

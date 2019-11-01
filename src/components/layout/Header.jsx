@@ -47,7 +47,7 @@ const Header = () => {
       }
 
       if (shouldBeStyle.transition === headerStyle.transition) return
-      console.log(1)
+
       setHeaderStyle(shouldBeStyle)
     },
     [headerStyle]

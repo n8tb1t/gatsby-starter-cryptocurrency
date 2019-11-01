@@ -1,20 +1,22 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classnames from 'classnames';
+import React from 'react'
 
-import Button from '../../components/common/Button';
+import classnames from 'classnames'
 
-import learnMore from '../../images/open-book.svg';
-import download from '../../images/wallet.svg';
+import Button from '../../components/common/Button'
 
-const CustomButton = ({type, link}) => {
-  switch(type) {
-    case 'download': return <Button empty text="Download" icon="download" link={link} />
-    case 'docs': return <Button text="Get started" icon="flag" link={link} />
+import learnMore from '../../images/open-book.svg'
+import download from '../../images/wallet.svg'
+
+const CustomButton = ({ type, link }) => {
+  switch (type) {
+    case 'download':
+      return <Button empty text="Download" icon="download" link={link} />
+    case 'docs':
+      return <Button text="Get started" icon="flag" link={link} />
   }
 }
 
-const EcosystemCard = ({ big, image, link, text, title, type }) => (
+const EcosystemCard = ({ big = false, image, link, text, title, type }) => (
   <div className={classnames('grid__item', { full: big })}>
     <div className={classnames('card ecosystem__card', { big })}>
       <div className="card__circle">
@@ -29,21 +31,9 @@ const EcosystemCard = ({ big, image, link, text, title, type }) => (
       </div>
     </div>
   </div>
-);
+)
 
-EcosystemCard.propTypes = {
-  big: PropTypes.bool,
-  image: PropTypes.string.isRequired,
-  link: PropTypes.string.isRequired,
-  text: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-};
-
-EcosystemCard.defaultProps = {
-  big: false,
-};
-
-const Ecosystem = () => (
+export default () => (
   <section className="home__part home__ecosystem">
     <div className="container">
       <h1 className="ecosystem__title">
@@ -68,6 +58,4 @@ const Ecosystem = () => (
       </div>
     </div>
   </section>
-);
-
-export default Ecosystem;
+)

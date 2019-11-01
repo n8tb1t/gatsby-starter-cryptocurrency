@@ -1,6 +1,6 @@
-
 import React, { useState, useRef, useEffect, Fragment } from 'react'
 import algoliasearch from 'algoliasearch/lite'
+
 import {
   InstantSearch,
   Index,
@@ -90,9 +90,9 @@ const Results = connectStateResults(({ searchState: state, searchResults: res, c
   )
 )
 
-export default function Search({ indices }) {
+export default function Search({ className, indices }) {
   return (
-    <div className="search header__search">
+    <div className={`search ${className}`}>
       <InstantSearch indexName={indices[0].name} searchClient={searchClient()}>
         <Input>
           <div className="search__results">

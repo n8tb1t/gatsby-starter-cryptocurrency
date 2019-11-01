@@ -1,8 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import React from 'react'
+import classNames from 'classnames'
 
-const HomeList = ({ data, className }) => (
+export default ({ data = [], className = null }) => (
   <div className={classNames('home__list', className)}>
     {data.map((item, index) => (
       <div key={`point${index}`} className="home__point">
@@ -11,16 +10,4 @@ const HomeList = ({ data, className }) => (
       </div>
     ))}
   </div>
-);
-
-HomeList.propTypes = {
-  data: PropTypes.array,
-  className: PropTypes.string,
-};
-
-HomeList.defaultProps = {
-  data: [],
-  className: null,
-};
-
-export default HomeList;
+)

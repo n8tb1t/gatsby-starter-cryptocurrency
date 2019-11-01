@@ -1,14 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'gatsby';
-import Collapsible from 'react-collapsible';
-import classNames from 'classnames';
-import NavItemLink from './NavItemLink';
+import React from 'react'
 
-const NavItem = ({ item, location, current, onClick, version }) => {
-  const { items, path, title } = item;
-  const versionedPath = `${version}${path}`;
-  const open = versionedPath === current;
+import { Link } from 'gatsby'
+import Collapsible from 'react-collapsible'
+import classNames from 'classnames'
+import NavItemLink from './NavItemLink'
+
+export default ({ item, location, current = null, onClick = () => {}, version = '' }) => {
+  const { items, path, title } = item
+  const versionedPath = `${version}${path}`
+  const open = versionedPath === current
   return items ? (
     <Collapsible
       className="menu__item"
@@ -26,8 +26,11 @@ const NavItem = ({ item, location, current, onClick, version }) => {
     >
       <ul className="menu-item__list">
         {items.map(navItem => {
-          const link = 'index' === navItem.id ? `/docs/${versionedPath}/` : `/docs/${versionedPath}/${navItem.id}/`;
-          const active = link === location.pathname;
+          const link =
+            navItem.id === 'index'
+              ? `/docs/${versionedPath}/`
+              : `/docs/${versionedPath}/${navItem.id}/`
+          const active = link === location.pathname
           return (
             <li key={link} className={classNames('menu-item__link', { active })}>
               <NavItemLink
@@ -39,7 +42,7 @@ const NavItem = ({ item, location, current, onClick, version }) => {
                 version={version}
               />
             </li>
-          );
+          )
         })}
       </ul>
     </Collapsible>
@@ -49,21 +52,7 @@ const NavItem = ({ item, location, current, onClick, version }) => {
         <h2 key={versionedPath}>{title}</h2>
       </Link>
     </div>
-  );
-};
+  )
+}
 
-NavItem.propTypes = {
-  item: PropTypes.object.isRequired,
-  location: PropTypes.object.isRequired,
-  current: PropTypes.string,
-  onClick: PropTypes.func,
-  version: PropTypes.string,
-};
 
-NavItem.defaultProps = {
-  current: null,
-  version: '',
-  onClick: () => {},
-};
-
-export default NavItem;

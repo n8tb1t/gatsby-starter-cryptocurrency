@@ -1,32 +1,39 @@
-import React from 'react';
-import Helmet from 'react-helmet';
-import PropTypes from 'prop-types';
-import { Link } from 'gatsby';
-import Layout from '../components/Layout';
-import DocNav from '../components/layout/DocNav';
-import SwitchVersion from '../components/docs/SwitchVersion';
-import { currentVersion, siteUrl, versions } from '../../constants';
-import versionHelper from '../lib/versionHelper';
+import React from 'react'
+import Helmet from 'react-helmet'
 
-const Template = ({ location, pageContext }) => (
+import { Link } from 'gatsby'
+import Layout from '../components/Layout'
+import DocNav from '../components/layout/DocNav'
+import SwitchVersion from '../components/docs/SwitchVersion'
+import { currentVersion, siteUrl, versions } from '../../constants'
+import versionHelper from '../lib/versionHelper'
+
+export default ({ location, pageContext }) => (
   <Layout location={location}>
     <div className="page__docs">
       <Helmet title={(pageContext.title && pageContext.title) || 'Documentation'}>
-        {'' !== pageContext.version
+        {pageContext.version !== ''
           ? [
-            <link
-              rel="canonical"
-              href={
-                siteUrl +
-                location.pathname.replace(new RegExp(`/(${versions.map(versionHelper.getPrefixedVersion).join('|')})/`), '/')
-              }
-            />,
-            <meta name="robots" content="noindex" />,
-          ]
+              <link
+                rel="canonical"
+                href={
+                  siteUrl +
+                  location.pathname.replace(
+                    new RegExp(`/(${versions.map(versionHelper.getPrefixedVersion).join('|')})/`),
+                    '/'
+                  )
+                }
+              />,
+              <meta name="robots" content="noindex" />
+            ]
           : false}
         <meta
           name="docsearch:version"
-          content={ '' === pageContext.version ? versionHelper.getPrefixedVersion(currentVersion) : pageContext.prefixedVersion }
+          content={
+            pageContext.version === ''
+              ? versionHelper.getPrefixedVersion(currentVersion)
+              : pageContext.prefixedVersion
+          }
         />
       </Helmet>
       <div className="container docs__content">
@@ -57,11 +64,4 @@ const Template = ({ location, pageContext }) => (
       <DocNav version={pageContext.version} nav={pageContext.nav.chapters} location={location} />
     </div>
   </Layout>
-);
-
-export default Template;
-
-Template.propTypes = {
-  location: PropTypes.object.isRequired,
-  pageContext: PropTypes.object.isRequired,
-};
+)

@@ -1,12 +1,18 @@
-import React from 'react';
-import { openSourceData, otherData } from '../../data/logos';
+import React from 'react'
+import { openSourceData, otherData } from '../../data/logos'
 
 const openSourceList = openSourceData.map(({ name, logo, link }) => (
-  <a key={name} href={link} target="_blank" rel="noopener noreferrer" className="references__item big">
+  <a
+    key={name}
+    href={link}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="references__item big"
+  >
     <img src={`/references/${logo}.png`} alt={name} width="300" height="300" />
     <p className="logo__title">{name}</p>
   </a>
-));
+))
 
 const otherList = otherData.map(({ name, logo, link }) => (
   <a
@@ -19,9 +25,9 @@ const otherList = otherData.map(({ name, logo, link }) => (
   >
     <img src={`/references/${logo}.png`} alt={name} width="300" height="110" />
   </a>
-));
+))
 
-const References = () => (
+export default () => (
   <section className="home__part home__references">
     <div className="container references__container">
       <h1 className="references__title">
@@ -33,6 +39,4 @@ const References = () => (
       <div className="references__list list__other">{otherList}</div>
     </div>
   </section>
-);
-
-export default References;
+)

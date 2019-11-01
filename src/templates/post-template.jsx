@@ -5,12 +5,15 @@ import Img from 'gatsby-image'
 import { Disqus } from 'gatsby-plugin-disqus'
 import Layout from '../components/Layout'
 
-export default ({ data: { post }, location, pageContext }) => {
+const {
+  siteMetadata: { siteUrl }
+} = require('../../config')
 
+export default ({ data: { post }, location, pageContext }) => {
   const disqusConfig = {
-    url: `https://www.cryptocatalyst.net${  location.pathname}`,
+    url: `${siteUrl}${location.pathname}`,
     identifier: post.id,
-    title: post.title,
+    title: post.title
   }
 
   const auth = require('../images/devs/n8tb1t.jpg')
@@ -56,7 +59,6 @@ export default ({ data: { post }, location, pageContext }) => {
             <div className="blog__article" dangerouslySetInnerHTML={{ __html: post.html }} />
             <Disqus className="blog__disqus" config={disqusConfig} />
           </div>
-
         </section>
       </div>
     </Layout>

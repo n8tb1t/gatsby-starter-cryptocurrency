@@ -22,7 +22,7 @@ const circles = data.map((content, index) => (
   </article>
 ))
 
-const AllInOne = () => (
+export default () => (
   <section className="home__part home__all-in-one">
     <div className="container">
       <h1 className="aio__title">
@@ -32,5 +32,3 @@ const AllInOne = () => (
     </div>
   </section>
 )
-
-export default AllInOne

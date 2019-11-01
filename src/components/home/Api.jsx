@@ -1,8 +1,9 @@
 import React from 'react'
+import { Link } from 'gatsby'
+
 import code from '../../data/api-code'
 import Laptop from '../../images/laptop.svg'
 import Prism from '../../vendor/Prism'
-import { Link } from 'gatsby'
 
 export default () => (
   <section className="home__seo home__part">
