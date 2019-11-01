@@ -1,7 +1,5 @@
 import React, { useRef, useEffect } from 'react'
 
-import LogoCX from '../../images/logo.svg'
-
 const {
   projectGithub,
   siteMetadata: { twitter }
@@ -30,7 +28,7 @@ export default () => {
 
   return (
     <footer className="footer openable">
-      <img className="footer__logo" src={LogoCX} alt="site logo" width="300" />
+      <img className="footer__logo" src={`/logo.svg`} alt="site logo" width="300" />
       <p className="footer__copyright">
         Copyright © 2019{' '}
         <a href="https://github.com/n8tb1t" target="_blank" rel="noopener noreferrer">

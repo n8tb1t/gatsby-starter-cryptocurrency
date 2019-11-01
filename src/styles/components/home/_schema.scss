@@ -1,24 +1,30 @@
-.home__schema {
+//noinspection SassScssResolvedByNameOnly
+
+.schema {
   background-color: $orange;
   text-align: center;
-  z-index: z("schema");
+  z-index: z('schema');
+
+  h1 {
+    line-height: unset;
+  }
 
   .status__todo {
-    color:$orange;
+    color: $orange;
   }
 
   .status__done {
-    color:$dark_color;
+    color: $dark_color;
   }
 
   .status__in_progress {
     background-color: $lightgreen;
-    color:$dark_color;
+    color: $dark_color;
   }
 
   .status__funding {
     background-color: $dark_color;
-    color:$lightgreen;
+    color: $lightgreen;
   }
 
   .schema__title {
@@ -28,8 +34,11 @@
     strong {
       color: $green;
       background: $all_in_one_bg;
-      padding-left: 3px;
-      padding-right: 3px;
+      padding-left: 5px;
+      padding-right: 5px;
+      display: inline-block;
+      margin-bottom: 5px;
+      padding-bottom: 5px;
     }
   }
 
@@ -66,6 +75,26 @@
     font-weight: $normal;
   }
 
+  .schema__card_event {
+    h3 {
+      text-align: center;
+      margin-bottom: 10px;
+      margin-top: 10px;
+    }
+
+    img {
+      border-radius: 50%;
+      display: block;
+      margin-left: auto;
+      margin-right: auto
+    }
+    .links {
+      display: inline-block;
+      font-size: 1.6em;
+      margin-right: 10px;
+      margin-top: 10px;
+    }
+  }
   .schema__card {
     @include z-depth-5;
     background-color: $white;
@@ -75,7 +104,7 @@
     border: 5px solid $white;
     display: flex;
     height: 100%;
-    transition: box-shadow ease .2s;
+    transition: box-shadow ease 0.2s;
 
     &:not(:hover) {
       @include z-depth-0;
@@ -85,6 +114,7 @@
       color: $orange;
       margin-bottom: 10px;
     }
+
 
     .schema__icon {
       color: $orange;
@@ -117,9 +147,7 @@
     animation: dash 1s infinite linear;
   }
 
-
   @include mq($max-width: $vw-huge) {
-
   }
   @include mq($max-width: $vw-thin) {
     .schema__item {

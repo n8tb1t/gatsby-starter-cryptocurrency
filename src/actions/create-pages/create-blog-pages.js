@@ -38,7 +38,7 @@ module.exports = async (graphql, actions) => {
   const createNewPage = (context, template) => {
     createPage({
       path: context.slug,
-      component: path.resolve(`./src/templates/${template}-template.jsx`),
+      component: path.resolve(`./src/templates/blog-${template}-page-template.jsx`),
       context,
     })
   }

@@ -1,13 +1,16 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+
 import NavItem from '../docs/NavItem'
-import { versions } from '../../../constants'
 import { getPrefixedVersion } from '../../lib/versionHelper'
+
+const {
+  docs: { versions }
+} = require('../../../config')
 
 class DocNav extends Component {
   componentWillMount() {
     const { location } = this.props
-    if ('undefined' !== typeof window) {
+    if (typeof window !== 'undefined') {
       window.addEventListener('scroll', this.handleScroll)
       window.addEventListener('click', this.handleScroll)
     }
@@ -47,7 +50,7 @@ class DocNav extends Component {
       child.parentElement.classList.remove('current')
     })
 
-    for (let i = childsCurrentItem.length; 0 < i; i -= 1) {
+    for (let i = childsCurrentItem.length; i > 0; i -= 1) {
       if (
         childsInnerPageItem[i] &&
         childsInnerPageItem[i].offsetTop < window.scrollY + 2 &&
@@ -95,11 +98,7 @@ class DocNav extends Component {
   }
 }
 
-DocNav.propTypes = {
-  location: PropTypes.object.isRequired,
-  nav: PropTypes.array,
-  version: PropTypes.string
-}
+
 
 DocNav.defaultProps = {
   nav: [],

@@ -4,9 +4,6 @@ import links from '../../data/menu'
 import Search from '../search'
 import MenuItem from './MenuItem'
 
-import LogoCX from '../../images/logo.svg'
-
-
 const blogQueryConfig = {
   hitsPerPage: 3,
   attributesToRetrieve: ['slug'],
@@ -35,7 +32,7 @@ export default ({ open = false }) => (
     <div className="side-menu__top">
       <div className="side-menu__logo">
         <div className="logo__circle">
-          <img className="logo__cx" src={LogoCX} width="555" height="321" alt="logo" />
+          <img className="logo__cx" src={`/logo.svg`} width="555" height="321" alt="logo" />
         </div>
         <div className="logo__text">Catalyst Network</div>
       </div>

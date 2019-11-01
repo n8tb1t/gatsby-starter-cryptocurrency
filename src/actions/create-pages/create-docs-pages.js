@@ -3,8 +3,11 @@ const path = require('path')
 const jsyaml = require('js-yaml')
 const { readFileSync } = require('fs')
 
-const { current, versions } = require('../../../constants')
 const versionHelper = require('../../lib/versionHelper')
+
+const {
+  docs: { current, versions }
+} = require('../../../config')
 
 const navs = {}
 
@@ -18,7 +21,7 @@ versions.forEach(version => {
 
 module.exports = async (graphql, actions) => {
   const { createPage, createRedirect } = actions
-  const docPageTemplate = path.resolve('./src/templates/doc.jsx')
+  const docPageTemplate = path.resolve('./src/templates/docs-page-template.jsx')
 
   const allDocsPages = await graphql(`
     query getAllDocsPages {

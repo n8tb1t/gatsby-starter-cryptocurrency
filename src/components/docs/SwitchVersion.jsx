@@ -1,7 +1,10 @@
 import React from 'react'
 import { navigate } from 'gatsby'
-import constants, { current, versions } from '../../../constants'
 import versionHelper from '../../lib/versionHelper'
+
+const {
+  docs, docs: {current, versions}
+} = require('../../../config')
 
 versions.unshift(current)
 
@@ -10,17 +13,20 @@ const doChange = (e, location, currentVersion) => {
 
   if (current === targetVersion) {
     const path = location.pathname.replace(currentVersion, '')
+    // noinspection JSIgnoredPromiseFromCall
     navigate(path)
     return
   }
 
   if (currentVersion === '') {
     const path = location.pathname.replace('docs/', `docs/${targetVersion}/`)
+    // noinspection JSIgnoredPromiseFromCall
     navigate(path)
     return
   }
 
   const path = location.pathname.replace(currentVersion, `${targetVersion}/`)
+  // noinspection JSIgnoredPromiseFromCall
   navigate(path)
 }
 
@@ -31,7 +37,7 @@ export default ({ location, currentVersion }) => (
   >
     {versions.map(version => {
       const formattedVersion = versionHelper.getPrefixedVersion(version)
-      const correspondingVersion = constants[`${version}Version`]
+      const correspondingVersion = docs[`${version}Version`]
       return (
         <option key={formattedVersion} value={formattedVersion}>
           {(

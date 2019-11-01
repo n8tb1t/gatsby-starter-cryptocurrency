@@ -6,7 +6,9 @@ const { kebabCase } = require('lodash')
 
 const  createNodeId  = require('gatsby/dist/utils/create-node-id')
 
-const { current } = require('../../constants')
+const {
+  docs: {current}
+} = require('../../config')
 
 const {slugs: { tagPrefix, categoryPrefix, authorPrefix }} = require('../../config')
 

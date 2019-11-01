@@ -7,6 +7,14 @@ module.exports = {
     twitter: 'catalyst_CX'
   },
 
+  docs: {
+    current: 'current',
+    versions: ['master'],
+    currentVersion: '0.4',
+    masterVersion: '0.5',
+    docsRepo:'https://github.com/cx-catalyst/catalyst-docs/edit/'
+  },
+
   projectGithub: {
     user: 'catalystdevelopment',
     repo: 'catalyst'

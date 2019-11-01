@@ -5,8 +5,11 @@ import { Link } from 'gatsby'
 import Layout from '../components/Layout'
 import DocNav from '../components/layout/DocNav'
 import SwitchVersion from '../components/docs/SwitchVersion'
-import { currentVersion, siteUrl, versions } from '../../constants'
 import versionHelper from '../lib/versionHelper'
+
+const {
+  siteMetadata: { siteUrl }, docs: {versions}
+} = require('../../config')
 
 export default ({ location, pageContext }) => (
   <Layout location={location}>
@@ -27,14 +30,6 @@ export default ({ location, pageContext }) => (
               <meta name="robots" content="noindex" />
             ]
           : false}
-        <meta
-          name="docsearch:version"
-          content={
-            pageContext.version === ''
-              ? versionHelper.getPrefixedVersion(currentVersion)
-              : pageContext.prefixedVersion
-          }
-        />
       </Helmet>
       <div className="container docs__content">
         <SwitchVersion location={location} currentVersion={pageContext.version} />

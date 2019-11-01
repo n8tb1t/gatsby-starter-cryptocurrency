@@ -4,7 +4,6 @@ import { useScrollPosition } from '@n8tb1t/use-scroll-position'
 import { Link } from 'gatsby'
 
 import links from '../../data/menu'
-import LogoCX from '../../images/logo.svg'
 import MenuItem from './MenuItem'
 import Search from '../search'
 
@@ -56,7 +55,7 @@ const Header = () => {
   return (
     <header style={{ ...headerStyle }} className="header openable">
       <Link to="/" className="header__logo">
-        <img className="logo__cx" src={LogoCX} alt="Catalyst Logo" width="0" height="0" />
+        <img className="logo__cx" src={`/logo.svg`} alt="Catalyst Logo" width="0" height="0" />
         <span className="catalyst_network">Catalyst Network</span>
       </Link>
       <Search className="header__search" indices={searchIndices} />

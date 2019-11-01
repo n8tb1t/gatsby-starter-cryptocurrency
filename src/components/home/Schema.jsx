@@ -1,8 +1,7 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import dataSchema from '../../data/schema'
 
-const SchemaItem = ({ icon, link, text, title, status }) => {
+const SchemaItem = ({ icon, link, text, title, status, avatar = null, links }) => {
   // eslint-disable-next-line consistent-return
   const Status = ({ status }) => {
     // eslint-disable-next-line default-case
@@ -31,6 +30,27 @@ const SchemaItem = ({ icon, link, text, title, status }) => {
       <Link to={to} className={className}>
         {children}
       </Link>
+    )
+  }
+
+  if (avatar) {
+    return (
+      <div className="schema__item" status={status}>
+        <div className="schema__card schema__card_event">
+          <div className="schema__content">
+            <img width={200} src={avatar} alt={title} />
+            <h3 className="">{title}</h3>
+            <p>{text}</p>
+            {Object.entries(links).map(([key, value]) => (
+              <div className="links" key={value}>
+                <a target="_blank" rel="noopener noreferrer" href={value}>
+                  {key}
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
     )
   }
 
@@ -74,13 +94,11 @@ const Lines = () => (
   </svg>
 )
 
-export default () => (
-  <section className="home__part home__schema">
+export default ({ title, schema }) => (
+  <section className="generic__part schema">
     <div className="container schema__container">
-      <h1 className="schema__title">
-        The Catalyst Network <strong>Roadmap</strong>
-      </h1>
-      {dataSchema.map(part => (
+      <h1 className="schema__title">{title}</h1>
+      {schema.map(part => (
         <SchemaPart key={part.title} {...part} />
       ))}
     </div>
