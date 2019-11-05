@@ -8,7 +8,7 @@ import AllInOne from '../components/home/AllInOne'
 import Giants from '../components/home/Giants'
 import Expose from '../components/home/Expose'
 import Schema from '../components/home/Schema'
-import roadMapSchema from '../data/schema-roadmap'
+import { schema, schemaConfig } from '../data/schema-roadmap'
 import References from '../components/home/References'
 import Api from '../components/home/Api'
 import '../styles/main.scss'
@@ -21,14 +21,7 @@ export default props => (
       <Ecosystem />
       <Giants />
       <GettingStarted />
-      <Schema
-        schema={roadMapSchema}
-        title={
-          <Fragment>
-            The Catalyst Network <strong>Roadmap</strong>
-          </Fragment>
-        }
-      />
+      <Schema schema={schema} config={schemaConfig} />
       <Expose />
       <Api />
       <References />

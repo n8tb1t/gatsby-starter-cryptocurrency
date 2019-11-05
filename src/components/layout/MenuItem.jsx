@@ -29,7 +29,14 @@ const MenuItemLink = ({ path = null, children = null }) => {
 export default ({ text, path = null, submenu = null }) => (
   <Location>
     {({ location }) => {
-      const current = location.pathname.includes(path)
+      let current = RegExp(`^${path}`).test(location.pathname)
+
+      if (submenu && !path.includes('docs')) {
+        current = submenu.filter(menuItem =>
+            menuItem.path === location.pathname
+          ).length
+      }
+
       return (
         <div
           className={classNames('menu-item', {

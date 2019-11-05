@@ -4,7 +4,7 @@ import Collapsible from 'react-collapsible'
 import classNames from 'classnames'
 import NavSubItemLink from './NavSubItemLink'
 
-export default ({ path, anchors=null, title, current=false, location=null }) => {
+export default ({ path, anchors = null, title, current = false, location = null }) => {
   if (anchors) {
     return (
       <Collapsible
@@ -49,5 +49,3 @@ export default ({ path, anchors=null, title, current=false, location=null }) => 
     </Link>
   )
 }
-
-

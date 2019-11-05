@@ -1,7 +1,5 @@
 //noinspection SassScssResolvedByNameOnly
-
 .schema {
-  background-color: $orange;
   text-align: center;
   z-index: z('schema');
 
@@ -28,12 +26,9 @@
   }
 
   .schema__title {
-    color: $white;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 
     strong {
-      color: $green;
-      background: $all_in_one_bg;
       padding-left: 5px;
       padding-right: 5px;
       display: inline-block;
@@ -42,12 +37,18 @@
     }
   }
 
+  .schema__part.schema__part_small {
+    .schema__item {
+      width: 255px;
+      min-height: 50px;
+    }
+  }
+
   .schema__part {
     margin: 20px auto;
 
     h4 {
       font-size: 1.4rem;
-      background-color: $dark_color;
     }
 
     .schema__group {
@@ -71,11 +72,14 @@
     display: inline-block;
     width: 340px;
     min-height: 150px;
-    color: $blackblue;
+    color: $black;
     font-weight: $normal;
   }
 
-  .schema__card_event {
+  .schema__card.schema__card_event {
+    display: flex;
+    align-items: baseline;
+
     h3 {
       text-align: center;
       margin-bottom: 10px;
@@ -84,24 +88,40 @@
 
     img {
       border-radius: 50%;
+      background-color: $lightgrey;
       display: block;
       margin-left: auto;
-      margin-right: auto
+      margin-right: auto;
+      width: 100%;
+      max-width: 200px;
     }
+
+    li,
     .links {
       display: inline-block;
-      font-size: 1.6em;
+      font-size: 16px;
       margin-right: 10px;
       margin-top: 10px;
+    }
+
+    li {
+      font-weight: 700;
+      display: block;
+    }
+
+    li:before,
+    .links:before {
+      content: '\E315';
+      color: $orange;
+      //noinspection CssNoGenericFontName
+      font-family: 'fontello';
     }
   }
   .schema__card {
     @include z-depth-5;
-    background-color: $white;
     padding: 20px;
     text-align: left;
     align-items: center;
-    border: 5px solid $white;
     display: flex;
     height: 100%;
     transition: box-shadow ease 0.2s;
@@ -114,7 +134,6 @@
       color: $orange;
       margin-bottom: 10px;
     }
-
 
     .schema__icon {
       color: $orange;
@@ -130,17 +149,13 @@
   .lines {
     position: absolute;
     z-index: z('below');
-    left: 0;
-    top: 0;
     height: calc(100% + 80px);
     width: calc(100% - 80px);
     top: -25px;
     left: 40px;
-    background-color: $darkblue;
   }
 
   .line {
-    stroke: $clearblue;
     stroke-width: 4;
     stroke-dashoffset: 0;
     stroke-dasharray: 5;
@@ -163,5 +178,75 @@
 
   to {
     stroke-dashoffset: 0;
+  }
+}
+
+//noinspection SassScssResolvedByNameOnly
+.schema__theme_one {
+  background-color: $lightgrey;
+
+  .schema__title {
+    color: $dark_color;
+
+    strong {
+      color: $orange;
+      background: unset;
+    }
+  }
+
+  .schema__part {
+    h4 {
+      color: $lightgrey;
+      background-color: $orange;
+    }
+  }
+
+  .schema__card {
+    background-color: $white;
+    border-left: 5px solid $orange;
+    border-right: 5px solid $white;
+  }
+
+  .line {
+    stroke: $dark_color;
+  }
+
+  .lines {
+    background-color: $lightgrey;
+  }
+}
+
+//noinspection SassScssResolvedByNameOnly
+.schema__theme_two {
+  background-color: $orange;
+
+  .schema__title {
+    color: $white;
+
+    strong {
+      color: $green;
+      background: $all_in_one_bg;
+    }
+  }
+
+  .schema__part {
+    h4 {
+      color: $orange;
+      background-color: $dark_color;
+    }
+  }
+
+  .schema__card {
+    background-color: $white;
+    border-left: 5px solid $dark_color;
+    border-right: 5px solid $white;
+  }
+
+  .line {
+    stroke: $white;
+  }
+
+  .lines {
+    background-color: $orange;
   }
 }

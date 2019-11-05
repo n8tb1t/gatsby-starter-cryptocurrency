@@ -5,11 +5,10 @@ import Collapsible from 'react-collapsible'
 import classNames from 'classnames'
 import NavItemLink from './NavItemLink'
 
-export default ({ item, location, current = null, onClick = () => {}, version = ''}) => {
+export default ({ item, location, current = null, onClick = () => {}, version = '' }) => {
   const { items, path, title } = item
   const versionedPath = `${version}${path}`
   const open = versionedPath === current
-
   return items ? (
     <Collapsible
       className="menu__item"
@@ -33,6 +32,7 @@ export default ({ item, location, current = null, onClick = () => {}, version = 
               : `/docs/${versionedPath}/${navItem.id}/`
           const active = link === location.pathname
 
+          console.log(navItem.id)
           return (
             <li key={link} className={classNames('menu-item__link', { active })}>
               <NavItemLink

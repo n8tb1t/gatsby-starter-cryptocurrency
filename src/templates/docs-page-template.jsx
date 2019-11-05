@@ -11,6 +11,15 @@ const {
   siteMetadata: { siteUrl }, docs: {versions}
 } = require('../../config')
 
+const addUniqueHeaderIDs = html => {
+  const regex = /(<h{1,5}([^>]+)>)/ig
+  let result = html
+  html.match(regex).forEach((value, index)=>{
+    result = result.replace(value, value.replace(/ /, ` data-header-id="${index}" `))
+  })
+
+  return result
+}
 export default ({ location, pageContext }) => (
   <Layout location={location}>
     <div className="page__docs">
@@ -33,7 +42,7 @@ export default ({ location, pageContext }) => (
       </Helmet>
       <div className="container docs__content">
         <SwitchVersion location={location} currentVersion={pageContext.version} />
-        <div dangerouslySetInnerHTML={{ __html: pageContext.html }} />
+        <div dangerouslySetInnerHTML={{ __html: addUniqueHeaderIDs(pageContext.html) }} />
         <div className="docs__content__help">
           <p>
             <a href={pageContext.urlEditDocumentation}>
@@ -44,13 +53,13 @@ export default ({ location, pageContext }) => (
       </div>
       <div className="container docs__nav">
         {pageContext.previous.slug && (
-          <Link className="prev" to={`/${pageContext.previous.slug}`}>
+          <Link className="prev" to={`${pageContext.previous.slug}`}>
             <i className="icon-chevron-left" />
             <span>{pageContext.previous.title}</span>
           </Link>
         )}
         {pageContext.next.slug && (
-          <Link className="next" to={`/${pageContext.next.slug}`}>
+          <Link className="next" to={`${pageContext.next.slug}`}>
             <span>{pageContext.next.title}</span>
             <i className="icon-chevron-right" />
           </Link>

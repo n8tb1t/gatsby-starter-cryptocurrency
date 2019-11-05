@@ -1,5 +1,26 @@
 export default [
   {
+    text: 'Blog',
+    path: '/blog/'
+  },  {
+    text: 'Services',
+    rootPath: '/services',
+    path: '/services',
+    submenu: [
+      {
+        text: 'Funding',
+        path: 'https://funding.cryptocatalyst.net'
+      },
+      {
+        text: 'News',
+        path: '/news/'
+      },{
+        text: 'Roadmap',
+        path: '/roadmap/'
+      },
+    ]
+  },
+  {
     text: 'docs',
     rootPath: '/docs',
     path: '/docs',
@@ -55,19 +76,7 @@ export default [
     ]
   },
   {
-    text: 'Blog',
-    path: '/blog/'
-  },
-  {
-    text: 'Funding',
-    path: 'https://funding.cryptocatalyst.net'
-  },
-  {
-    text: 'News',
-    path: '/news/'
-  },
-  {
     text: 'Devs',
-    path: '/support/'
+    path: '/devs/'
   }
 ]

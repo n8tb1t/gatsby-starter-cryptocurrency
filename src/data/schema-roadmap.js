@@ -1,9 +1,21 @@
-export default [
+import React, {Fragment} from 'react'
+import {STATUSES} from '../components/schema/schemaHelpers'
+
+export const schemaConfig = {
+  title: (
+    <Fragment>
+      The Catalyst Network <strong>Roadmap</strong>
+    </Fragment>
+  ),
+  theme: 'theme_two'
+}
+
+export const schema =  [
   {
     title: 'November 2018',
     items: [
       {
-        status: 1,
+        status: STATUSES.DONE,
         icon: 'rocket',
         link: '/docs/catalyst-specs/catalyst-specs/',
         title: 'The project start',
@@ -16,14 +28,14 @@ export default [
     title: 'December 2018',
     items: [
       {
-        status: 1,
+        status: STATUSES.DONE,
         icon: 'megaphone',
         link: '/docs/links/#bitcointalk',
         title: 'Bitcointalk Announcement',
         text: 'The bitcoinTalk Announcement, things got serious now the world knows about Catalyst.'
       },
       {
-        status: 1,
+        status: STATUSES.DONE,
         icon: 'linode',
         link: '/docs/catalyst-specs/pools',
         title: 'Infrastructure building',
@@ -36,7 +48,7 @@ export default [
     title: 'Q1 — 2019',
     items: [
       {
-        status: 1,
+        status: STATUSES.DONE,
         icon: 'user-add',
         link: '/docs/links/#links',
         title: 'Community',
@@ -44,7 +56,7 @@ export default [
           'Community building, creating Discord chat and various media sources, like Reddit, to spread the word about Catalyst'
       },
       {
-        status: 1,
+        status: STATUSES.DONE,
         icon: 'exchange',
         link: '/docs/links/#exchanges',
         title: '1st Exchange',
@@ -57,7 +69,7 @@ export default [
     title: 'Q2 — 2019',
     items: [
       {
-        status: 1,
+        status: STATUSES.DONE,
         icon: 'wallet',
         link: '/docs/catalyst-specs/getting-started',
         title: 'GUI Wallet',
@@ -65,7 +77,7 @@ export default [
           'Creating GUI wallet, for better user experience, and to allow people to sync remotely.'
       },
       {
-        status: 1,
+        status: STATUSES.DONE,
         icon: 'wallet',
         link: '/docs/catalyst-specs/getting-started',
         title: 'Paper Wallet',
@@ -73,7 +85,7 @@ export default [
           'now by writing down and protecting the mnemonic seed, you will always have access to your funds!'
       },
       {
-        status: 1,
+        status: STATUSES.DONE,
         icon: 'exchange',
         link: '/docs/links/#exchanges',
         title: '2nd Exchange',
@@ -85,7 +97,7 @@ export default [
     title: 'Q3 — 2019',
     items: [
       {
-        status: 1,
+        status: STATUSES.DONE,
         icon: 'bitcoin',
         link: '/docs/funding',
         title: 'Funding System',
@@ -93,10 +105,10 @@ export default [
           'The Catalyst Funding System was put in to action by members of the Catalyst Community. Our goal is to have our community members fund each other in order to help Catalyst grow.'
       },
       {
-        status: 1,
+        status: STATUSES.DONE,
         icon: 'flow-cross',
         link: '/docs/catalyst-specs/catalyst-specs',
-        title: 'Algo Change',
+        title: 'Algo. Change',
         text:
           'The algorithm change to Argon2/Chukwa to accelerate blockchain verification and make Catalyst’s network faster than the networks of the other CryptoNote-based cryptocurrencies.'
       }
@@ -106,7 +118,7 @@ export default [
     title: 'Q4 - 2019',
     items: [
       {
-        status: 2,
+        status: STATUSES.IN_PROGRESS,
         icon: 'test',
         link: '/blog',
         title: 'Article series',
@@ -114,7 +126,7 @@ export default [
           'Starting a series of articles on Medium social platform with news and updates about Catalyst life.'
       },
       {
-        status: 3,
+        status: STATUSES.FUNDING,
         icon: 'mobile',
         link: 'https://funding.cryptocatalyst.net/proposal/12',
         title: 'Mobile wallet',
@@ -122,7 +134,7 @@ export default [
           'It will allow CX users to use their smartphones to make instant payments and use CX Dapp services.'
       },
       {
-        status: 3,
+        status: STATUSES.FUNDING,
         icon: 'chrome',
         link: 'https://funding.cryptocatalyst.net/proposal/13',
         title: 'Web wallet',
@@ -130,7 +142,7 @@ export default [
           'Integrated into our website It will allow users to have access to their funds without any additional software.'
       },
       {
-        status: 2,
+        status: STATUSES.IN_PROGRESS,
         icon: 'website',
         link: '/docs/links/#links',
         title: 'New site',
@@ -138,7 +150,7 @@ export default [
           'Catalyst portal to host all the related data about the project, and provide various blockchain-related services.'
       },
       {
-        status: 1,
+        status: STATUSES.DONE,
         icon: 'sitemap',
         link: '/docs/links/#3d-nodes-map',
         title: 'Nodes 3D Map',
@@ -146,7 +158,7 @@ export default [
           'The detailed three-dimensional map of Catalyst network nodes, to give an overview of the current network state.'
       },
       {
-        status: 2,
+        status: STATUSES.IN_PROGRESS,
         icon: 'analytics',
         link: '/docs/analytics',
         title: 'Analytics',
@@ -159,7 +171,7 @@ export default [
     title: 'Q1 2020',
     items: [
       {
-        status: 3,
+        status: STATUSES.FUNDING,
         icon: 'exchange',
         link: 'https://funding.cryptocatalyst.net/proposal/15',
         title: 'More exchanges',
@@ -167,7 +179,7 @@ export default [
           'We want Catalyst to be as accessible to everyone, thus, the more exchanges we have the better.'
       },
       {
-        status: 0,
+        status: STATUSES.TODO,
         icon: 'coinmarketcap',
         link: '/docs/links/#coinmarketcap-and-coingecko',
         title: 'CMC & CG listing',
@@ -175,7 +187,7 @@ export default [
           'Listing on CoinMarketCap and CoinGecko to gain better exposure, and let more people know about the project.'
       },
       {
-        status: 3,
+        status: STATUSES.FUNDING,
         icon: 'chat',
         link: 'https://funding.cryptocatalyst.net/proposal/14',
         title: 'Add P2P Chat',
@@ -188,7 +200,7 @@ export default [
     title: 'Q2 2020',
     items: [
       {
-        status: 3,
+        status: STATUSES.FUNDING,
         icon: 'exchange',
         link: 'https://funding.cryptocatalyst.net/proposal/14',
         title: 'OTC trading',
@@ -196,7 +208,7 @@ export default [
           'Add OTC trading functionality to the GUI, web and mobile wallets. To make Catalyst an exchange independent currency.'
       },
       {
-        status: 0,
+        status: STATUSES.TODO,
         icon: 'bitcoin',
         link: '/docs/devs/sponsors',
         title: 'Sponsorship',
@@ -209,7 +221,7 @@ export default [
     title: 'Q3-Q4 2020',
     items: [
       {
-        status: 3,
+        status: STATUSES.FUNDING,
         icon: 'security',
         link: 'https://funding.cryptocatalyst.net/proposal/14',
         title: 'Dapps',

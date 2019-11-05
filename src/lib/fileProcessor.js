@@ -5,7 +5,6 @@ const treeHelper = require('./treeHelper')
 
 function getHTML5Outline(filepath, id) {
   const fileContent = fileContentHelper.getFileContent(filepath, id)
-
   return HTML5Outline(new JSDOM(fileContent).window.document.body)
 }
 
