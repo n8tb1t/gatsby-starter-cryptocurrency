@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useScrollPosition } from '@n8tb1t/use-scroll-position'
+// import { useScrollPosition } from '@n8tb1t/use-scroll-position'
 
 import { Link } from 'gatsby'
 
@@ -35,22 +35,22 @@ const Header = () => {
     transition: 'all 200ms ease-in'
   })
 
-  useScrollPosition(
-    ({ prevPos, currPos }) => {
-      const isVisible = currPos.y > prevPos.y
-
-      const shouldBeStyle = {
-        visibility: isVisible ? 'visible' : 'hidden',
-        transition: `all 200ms ${isVisible ? 'ease-in' : 'ease-out'}`,
-        transform: isVisible ? 'none' : 'translate(0, -100%)'
-      }
-
-      if (shouldBeStyle.transition === headerStyle.transition) return
-
-      setHeaderStyle(shouldBeStyle)
-    },
-    [headerStyle]
-  )
+  // useScrollPosition(
+  //   ({ prevPos, currPos }) => {
+  //     const isVisible = currPos.y > prevPos.y
+  //
+  //     const shouldBeStyle = {
+  //       visibility: isVisible ? 'visible' : 'hidden',
+  //       transition: `all 200ms ${isVisible ? 'ease-in' : 'ease-out'}`,
+  //       transform: isVisible ? 'none' : 'translate(0, -100%)'
+  //     }
+  //
+  //     if (shouldBeStyle.transition === headerStyle.transition) return
+  //
+  //     setHeaderStyle(shouldBeStyle)
+  //   },
+  //   [headerStyle]
+  // )
 
   return (
     <header style={{ ...headerStyle }} className="header openable">

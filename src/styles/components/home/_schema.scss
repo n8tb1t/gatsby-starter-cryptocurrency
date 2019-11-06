@@ -16,13 +16,13 @@
   }
 
   .status__in_progress {
-    background-color: $lightgreen;
+    background-color: $green;
     color: $dark_color;
   }
 
   .status__funding {
     background-color: $dark_color;
-    color: $lightgreen;
+    color: $green;
   }
 
   .schema__title {
@@ -225,7 +225,7 @@
 
     strong {
       color: $green;
-      background: $all_in_one_bg;
+      background: $dark_color;
     }
   }
 

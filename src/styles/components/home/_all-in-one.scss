@@ -1,6 +1,6 @@
 .home__all-in-one {
   z-index: z("default");
-  background-color: $all_in_one_bg;
+  background-color: $dark_color;
   text-align: center;
 
   &:before {
@@ -34,7 +34,7 @@
     width: 190px;
     height: 190px;
     border-radius: 50%;
-    background-color: $all_in_one_circle;
+    background-color: $white;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -46,7 +46,7 @@
       font-size: 1.8rem;
 
       strong {
-        color: $darkblue;
+        color: $orange;
       }
     }
   }

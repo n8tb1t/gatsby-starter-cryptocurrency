@@ -22,15 +22,24 @@ const ItemLink = ({ to, className, children }) =>
     </Link>
   )
 
-const Item = ({ icon, link, text, title, status = null, avatar = null, links }) => {
+const Item = ({
+  icon,
+  link,
+  text,
+  title,
+  status = null,
+  avatar = null,
+  links,
+  TextType = ({ children }) => <p>{children}</p>
+}) => {
   if (!status) {
     return (
       <div className="schema__item">
         <div className="schema__card schema__card_event">
           <div className="schema__content">
-            {(avatar) && <img  src={avatar} alt={title} />}
-            {(title) && <h3 className="">{title}</h3>}
-            <p>{text}</p>
+            {avatar && <img src={avatar} alt={title} />}
+            {title && <h3 className="">{title}</h3>}
+            <TextType>{text}</TextType>
             {Object.entries(links).map(([key, value]) => (
               <div className="links" key={value}>
                 <a target="_blank" rel="noopener noreferrer" href={value}>

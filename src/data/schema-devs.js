@@ -109,6 +109,8 @@ export const schema = [
         links: {
           Discord: 'https://discord.gg/Wf8hsBU'
         },
+        title: 'Active Members:',
+        TextType: ({ children }) => <span>{children}</span>,
         text: (
           <ul>
             <li>@Synku</li>

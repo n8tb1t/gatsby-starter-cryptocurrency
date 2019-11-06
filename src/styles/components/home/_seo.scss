@@ -1,5 +1,5 @@
 .home__seo {
-  background-color: $lightgreen;
+  background-color: $green;
   z-index: z("default");
   text-align: center;
 
@@ -48,7 +48,7 @@
       margin-bottom: 30px;
 
       a {
-        color: $darkblue;
+        color: $orange;
         @include underline($orange, darken($orange, 10%));
       }
     }

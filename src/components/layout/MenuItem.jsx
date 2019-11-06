@@ -6,35 +6,26 @@ import classNames from 'classnames'
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { Location } from '@reach/router'
 
-const MenuItemLink = ({ path = null, children = null }) => {
-  if (!path) {
-    return <div className="menu-item__link">{children}</div>
-  }
+const isExternal = link => RegExp('^http(s|)://').test(link)
 
-  if (path.substr(0, 1) === '/') {
-    return (
-      <Link className="menu-item__link" to={path}>
-        {children}
-      </Link>
-    )
-  }
-
-  return (
-    <a className="menu-item__link" href={path} target="_blank" rel="noopener noreferrer">
+const MenuItemLink = ({ path = null, children = null, className = 'menu-item__link' }) =>
+  isExternal(path) ? (
+    <a className={className} href={path} target="_blank" rel="noopener noreferrer">
       {children}
     </a>
+  ) : (
+    <Link className={className} to={path}>
+      {children}
+    </Link>
   )
-}
 
-export default ({ text, path = null, submenu = null }) => (
+export default ({ text, path = null, submenu = null, clickable = true }) => (
   <Location>
     {({ location }) => {
       let current = RegExp(`^${path}`).test(location.pathname)
 
       if (submenu && !path.includes('docs')) {
-        current = submenu.filter(menuItem =>
-            menuItem.path === location.pathname
-          ).length
+        current = submenu.filter(menuItem => menuItem.path === location.pathname).length
       }
 
       return (
@@ -44,16 +35,16 @@ export default ({ text, path = null, submenu = null }) => (
             current
           })}
         >
-          <MenuItemLink text={text} path={path}>
+          <MenuItemLink path={path}>
             <span>{text}</span>
             {submenu && <i className="icon-chevron-circle-down" />}
           </MenuItemLink>
           {submenu && (
             <div className="menu-item__submenu">
               {submenu.map(({ text: itemText, path: itemPath }) => (
-                <Link key={itemText} to={itemPath} className="submenu__item">
+                <MenuItemLink key={itemText} path={itemPath} className="submenu__item">
                   {itemText}
-                </Link>
+                </MenuItemLink>
               ))}
             </div>
           )}
@@ -62,3 +53,4 @@ export default ({ text, path = null, submenu = null }) => (
     }}
   </Location>
 )
+

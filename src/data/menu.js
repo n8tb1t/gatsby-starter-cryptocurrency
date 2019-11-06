@@ -1,11 +1,11 @@
 export default [
   {
     text: 'Blog',
-    path: '/blog/'
+    path: '/blog/',
   },  {
     text: 'Services',
-    rootPath: '/services',
-    path: '/services',
+    rootPath: '/',
+    path: '/',
     submenu: [
       {
         text: 'Funding',
