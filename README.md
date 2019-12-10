@@ -13,6 +13,6 @@
   </a>
   <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs welcome!" />
   <a href="https://twitter.com/intent/follow?screen_name=n8tb1t">
-    <img src="https://img.shields.io/twitter/follow/catalyst_CX.svg?label=Follow%20@n8tb1t" alt="Follow @n8tb1t" />
+    <img src="https://img.shields.io/twitter/follow/n8tb1t.svg?label=Follow%20@n8tb1t" alt="Follow @n8tb1t" />
   </a>
 </p>
