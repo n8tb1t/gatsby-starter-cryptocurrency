@@ -16,3 +16,17 @@
     <img src="https://img.shields.io/twitter/follow/n8tb1t.svg?label=Follow%20@n8tb1t" alt="Follow @n8tb1t" />
   </a>
 </p>
+
+## Install
+
+- `git clone https://github.com/n8tb1t/gatsby-starter-cryptocurrency.git`
+- `cd gatsby-starter-cryptocurrency`
+- `yarn install`
+- **Windows:** `sh .\bin\retrieve-documentation`
+- **Linux:** `sh ./bin/retrieve-documentation`
+
+## Start
+
+- `gatsby develop`
+
+
