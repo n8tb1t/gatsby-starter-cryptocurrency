@@ -30,7 +30,7 @@ module.exports = {
 
   algolia: {
     appID: 'DCWT36AMWS',
-    apiKey: 'df50da353da7d8f17f4321fb0f2d6609'
+    apiKey: '000000000000000000000000000000'
   },
 
   contentPaths: {
