@@ -25,7 +25,7 @@ export default ({ children, location }) => {
     >
       <div className="full">
         <Helmet {...helmetConfig.head} />
-        <Header />
+        <Header path={location.pathname} />
         <div className="page openable">{children}</div>
         <Footer />
       </div>

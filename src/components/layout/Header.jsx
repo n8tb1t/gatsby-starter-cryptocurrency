@@ -30,11 +30,10 @@ const searchIndices = [
   { name: `catalyst_docs`, title: `Documentation`, hitComp: `DocsHit`, config: docsQueryConfig }
 ]
 
-const Header = () => {
+const Header = ({path}) => {
   const [headerStyle, setHeaderStyle] = useState({
     transition: 'all 200ms ease-in'
   })
-
 
   useScrollPosition(
     ({ prevPos, currPos }) => {
@@ -48,7 +47,7 @@ const Header = () => {
 
       if (shouldBeStyle.transition === headerStyle.transition) return
 
-      setHeaderStyle(shouldBeStyle)
+      if (!path.includes('/docs')) setHeaderStyle(shouldBeStyle)
     },
     [headerStyle]
   )
