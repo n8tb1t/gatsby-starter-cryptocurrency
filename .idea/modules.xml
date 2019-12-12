@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/catalyst-website.iml" filepath="$PROJECT_DIR$/.idea/catalyst-website.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/gatsby-starter-cryptocurrency.iml" filepath="$PROJECT_DIR$/.idea/gatsby-starter-cryptocurrency.iml" />
     </modules>
   </component>
 </project>
