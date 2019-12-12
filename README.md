@@ -17,7 +17,14 @@
   </a>
 </p>
 
-A Full-fledged cryptocurrency portal with a landing page, blog, roadmap, devs team, and docs sections.
+Gatsby Starter Cryptocurrency is a full-fledged cryptocurrency portal with landing page, blog, roadmap, devs team, and docs sections.
+
+GatsbyJS cryptocurrency starter was initially forked, from [api-platform](https://github.com/api-platform/website), during our work on the project, we had to refactor a lot of it and fix some annoying bugs. So now it's a production-grade starter. The code is very friendly and modular so you can disable sections of the site you don't need or add your own pages.
+
+> GatsbyJS cryptocurrency starter is a community project, so feel free to commit your changes, and fixes, any help is welcomed.
+
+
+<img src="/static/screenshot.png" alt="screenshot" />
 
 ## ✨ Features
 
