@@ -7,6 +7,9 @@ module.exports = {
     twitter: 'catalyst_CX'
   },
 
+  blog: {
+    blogPagesDirectory: `${__dirname}/content/blog/`
+  },
   docs: {
     current: 'current',
     versions: ['master'],
@@ -18,7 +21,7 @@ module.exports = {
 
   projectGithub: {
     user: 'catalystdevelopment',
-    repo: 'catalyst'
+    repo: 'catalyst-cli'
   },
 
   disqus: {

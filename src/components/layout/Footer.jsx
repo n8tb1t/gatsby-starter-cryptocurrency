@@ -44,7 +44,7 @@ export default () => {
       <p className="footer__licence">
         Code licensed under{' '}
         <a
-          href="https://raw.githubusercontent.com/cx-catalyst/catalyst-website/master/LICENSE"
+          href="https://github.com/n8tb1t/gatsby-starter-cryptocurrency/blob/master/LICENSE"
           target="_blank"
           rel="noopener noreferrer"
         >

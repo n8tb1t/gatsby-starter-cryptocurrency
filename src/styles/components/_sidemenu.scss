@@ -58,14 +58,14 @@
       height: 20px;
       margin-left: 0px;
       font-size: 2em;
-      color:$green;
+      color:$secondary;
       font-weight:bold;
 
     }
 
     .side-menu__search {
       padding: 10px 20px;
-      border-top: 1px solid $orange;
+      border-top: 1px solid $primary;
       display: none;
       align-self: flex-end;
 
@@ -74,7 +74,7 @@
       }
 
       .search__input {
-        background-color: $green;
+        background-color: $secondary;
         color: $black;
       }
     }
@@ -92,15 +92,15 @@
     font-size: 1.8rem;
 
     &.current {
-      background-color: rgba($orange, 0.3);
+      background-color: rgba($primary, 0.3);
 
       & > .menu-item__link {
-        color: $orange;
+        color: $primary;
       }
     }
 
     &:not(:last-child) {
-      border-bottom: 1px solid $orange;
+      border-bottom: 1px solid $primary;
     }
 
     &.withSubmenu {
@@ -133,7 +133,7 @@
 
     &.menu-item__social i {
       padding: 0 10px;
-      color: $orange;
+      color: $primary;
       font-size: 2em;
       transition: all ease .2s;
 

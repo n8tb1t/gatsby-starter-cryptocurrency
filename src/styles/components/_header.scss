@@ -46,12 +46,12 @@
     background-color: $dark_color;
     /*border-radius: 50%;*/
     padding: 5px;
-    border: 5px solid $orange;
+    border: 5px solid $primary;
   }
 
   .catalyst_network {
     color: $white;
-    background-color: $orange;
+    background-color: $primary;
     font-size: 26px;
     text-shadow: 2px 2px #08080826;
     padding-right: 5px;
@@ -72,7 +72,7 @@
 
     i {
       padding: 0 10px;
-      color: $orange;
+      color: $primary;
       font-size: 2.4em;
       transition: all ease 0.2s;
 
@@ -114,7 +114,7 @@
 
       i {
         margin-left: 10px;
-        color: $orange;
+        color: $primary;
       }
 
       &:after {
@@ -125,7 +125,7 @@
         width: 50%;
         height: 0;
         opacity: 1;
-        background-color: $orange;
+        background-color: $primary;
         transform: translateX(-50%);
         transition: all ease 0.3s;
       }
@@ -137,7 +137,7 @@
       top: calc(100% - 20px);
       display: table;
       text-align: left;
-      border-top: 5px solid $orange;
+      border-top: 5px solid $primary;
       opacity: 0;
       transform: scale(0);
       transform-origin: top;
@@ -157,7 +157,7 @@
 
         &:hover {
           background-color: $lightgrey;
-          color: $orange;
+          color: $primary;
         }
       }
     }
@@ -173,7 +173,7 @@
     }
 
     & > .menu-item__link {
-      color: $orange;
+      color: $primary;
 
       &:after {
         height: 4px;
@@ -201,7 +201,7 @@
 
       & > .menu-item__link {
         & > span {
-          color: $green;
+          color: $secondary;
         }
       }
     }

@@ -16,7 +16,7 @@ export default ({ data: { post }, location, pageContext }) => {
     title: post.title
   }
 
-  const auth = require('../images/devs/n8tb1t.jpg')
+
   return (
     <Layout location={location}>
       <div className="blog">
@@ -31,7 +31,7 @@ export default ({ data: { post }, location, pageContext }) => {
             />
             <div className="post_info">
               <div className="post_info__avatar">
-                <img alt="n8tb1t" src={auth} />
+                <img alt="n8tb1t" src="/contributors/core/n8tb1t.jpg" />
               </div>
               <div className="post_info__meta">
                 <div>

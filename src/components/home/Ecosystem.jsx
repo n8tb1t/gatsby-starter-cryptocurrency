@@ -56,7 +56,7 @@ export default () => (
         />
         <EcosystemCard
           image={devs}
-          link="/support/"
+          link="/devs/"
           text="Our developers are one of the best in their field, they work constantly to make Catalyst better and more competitive. Using all help they can get from the community and the fellow programmers."
           title="Awesome dev. team"
         />

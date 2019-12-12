@@ -8,7 +8,7 @@
   }
 
   .status__todo {
-    color: $orange;
+    color: $primary;
   }
 
   .status__done {
@@ -16,13 +16,13 @@
   }
 
   .status__in_progress {
-    background-color: $green;
+    background-color: $secondary;
     color: $dark_color;
   }
 
   .status__funding {
     background-color: $dark_color;
-    color: $green;
+    color: $secondary;
   }
 
   .schema__title {
@@ -112,7 +112,7 @@
     li:before,
     .links:before {
       content: '\E315';
-      color: $orange;
+      color: $primary;
       //noinspection CssNoGenericFontName
       font-family: 'fontello';
     }
@@ -131,12 +131,12 @@
     }
 
     h3 {
-      color: $orange;
+      color: $primary;
       margin-bottom: 10px;
     }
 
     .schema__icon {
-      color: $orange;
+      color: $primary;
       font-size: 6rem;
       margin-right: 20px;
     }
@@ -189,7 +189,7 @@
     color: $dark_color;
 
     strong {
-      color: $orange;
+      color: $primary;
       background: unset;
     }
   }
@@ -197,13 +197,13 @@
   .schema__part {
     h4 {
       color: $lightgrey;
-      background-color: $orange;
+      background-color: $primary;
     }
   }
 
   .schema__card {
     background-color: $white;
-    border-left: 5px solid $orange;
+    border-left: 5px solid $primary;
     border-right: 5px solid $white;
   }
 
@@ -218,20 +218,20 @@
 
 //noinspection SassScssResolvedByNameOnly
 .schema__theme_two {
-  background-color: $orange;
+  background-color: $primary;
 
   .schema__title {
     color: $white;
 
     strong {
-      color: $green;
+      color: $secondary;
       background: $dark_color;
     }
   }
 
   .schema__part {
     h4 {
-      color: $orange;
+      color: $primary;
       background-color: $dark_color;
     }
   }
@@ -247,6 +247,6 @@
   }
 
   .lines {
-    background-color: $orange;
+    background-color: $primary;
   }
 }

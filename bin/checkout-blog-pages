@@ -1,0 +1,25 @@
+#!/usr/bin/env node
+
+const { execSync } = require('child_process')
+const fs = require('fs')
+const path = require('path')
+
+const versionHelper = require('../src/lib/versionHelper')
+
+const {
+  blog: { blogPagesDirectory }
+} = require('../config')
+
+console.info('\x1b[36m', `Deleting ${blogPagesDirectory}`, '\x1b[37m')
+execSync(`rm -rf ${blogPagesDirectory}`)
+
+console.info(
+  '\x1b[36m',
+  `Cloning blog pages in ${blogPagesDirectory}`,
+  '\x1b[37m'
+)
+execSync(
+  `git clone https://github.com/cx-catalyst/catalyst-articles.git ${blogPagesDirectory}`
+)
+console.info('\x1b[36m', 'blog pages cloned', '\x1b[37m')
+

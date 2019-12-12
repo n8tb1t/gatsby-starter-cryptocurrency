@@ -8,6 +8,10 @@ export default [
     path: '/',
     submenu: [
       {
+        text: 'ChainSub',
+        path: 'https://chainsub.space'
+      },
+      {
         text: 'Funding',
         path: 'https://funding.cryptocatalyst.net'
       },

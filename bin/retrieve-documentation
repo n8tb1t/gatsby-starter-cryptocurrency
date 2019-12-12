@@ -3,6 +3,7 @@ set -ex
 
 # Remove previous documentation and checkout documentation
 
+bin/checkout-blog-pages
 bin/checkout-documentation
 
 # Generate "nav.yml"

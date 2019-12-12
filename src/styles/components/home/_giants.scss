@@ -1,9 +1,9 @@
 .home__giants {
   z-index: z("giants");
-  background-color: $green;
+  background-color: $secondary;
 
   .point__arrow {
-    color: $orange;
+    color: $primary;
   }
 
   .giants__title {
@@ -13,11 +13,11 @@
   .giants__title strong,
   a,
   p strong {
-    color: $orange;
+    color: $primary;
   }
 
   a {
-    @include underline($orange, darken($orange, 30%));
+    @include underline($primary, darken($primary, 30%));
   }
 
   .giants__content {

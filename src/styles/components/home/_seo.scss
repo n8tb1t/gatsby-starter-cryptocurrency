@@ -1,5 +1,5 @@
 .home__seo {
-  background-color: $green;
+  background-color: $secondary;
   z-index: z("default");
   text-align: center;
 
@@ -8,7 +8,7 @@
     margin-bottom: 30px;
 
     strong {
-      color: $orange;
+      color: $primary;
     }
   }
 
@@ -48,8 +48,8 @@
       margin-bottom: 30px;
 
       a {
-        color: $orange;
-        @include underline($orange, darken($orange, 10%));
+        color: $primary;
+        @include underline($primary, darken($primary, 10%));
       }
     }
   }

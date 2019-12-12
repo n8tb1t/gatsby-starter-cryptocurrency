@@ -2,17 +2,17 @@
   position: relative;
   z-index: z("footer");
   background-color: $dark_color;
-  border-top: 5px solid $orange;
+  border-top: 5px solid $primary;
   color: $white;
   text-align: center;
   padding: 50px 20px 20px;
   height: $footerH;
 
   a {
-    color: $orange;
+    color: $primary;
 
     &:hover {
-      color: $green;
+      color: $secondary;
     }
   }
 

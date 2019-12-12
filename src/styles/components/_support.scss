@@ -10,7 +10,7 @@
     strong {
       padding-left: 5px;
       padding-right: 5px;
-      color: $orange;
+      color: $primary;
       background-color:$dark_color;
     }
   }
@@ -19,7 +19,7 @@
     strong {
       padding-left: 5px;
       padding-right: 5px;
-      color: $orange;
+      color: $primary;
       background-color:$dark_color;
     }
   }
@@ -40,7 +40,7 @@
     margin: 20px;
 
     a {
-      @include underline($orange, $orange);
+      @include underline($primary, $primary);
     }
 
     .support-card__image {
@@ -67,7 +67,7 @@
     margin: 20px;
 
     a {
-      @include underline($orange, $orange);
+      @include underline($primary, $primary);
     }
 
     .support-card__image {

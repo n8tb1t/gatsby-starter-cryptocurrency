@@ -4,7 +4,7 @@
   width: 100%;
 
   .search__icon {
-    color: $orange;
+    color: $primary;
     font-size: 2.4em;
     opacity: 0.5;
     margin-right: 15px;
@@ -26,7 +26,7 @@
 
     &:focus {
       outline: none;
-      background-color: rgba($green, 0.5);
+      background-color: rgba($secondary, 0.5);
     }
   }
 
@@ -63,7 +63,7 @@
     padding: 10px;
   }
   .search__results_title {
-    background: $orange;
+    background: $primary;
     margin-top: 0;
     color: #fff;
     padding: 10px;
