@@ -24,7 +24,7 @@
     "gatsby-remark-relative-images": "^0.2.3",
     "gatsby-transformer-sharp": "^2.3.9",
     "gatsby-transformer-yaml": "^2.2.20",
-    "node-sass": "^4.13.0",
+    "node-sass": "^7.0.0",
     "normalize.css": "^8.0.1",
     "prismjs": "^1.17.1",
     "react": "^16.12.0",
